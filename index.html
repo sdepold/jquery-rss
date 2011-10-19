@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery.rss example</title>
+    <script src="lib/jquery-1.6.4.min.js"></script>
+    <script src="src/jquery.rss.js"></script>
+    <script>
+      jQuery(function($) {
+        $("#rss-feeds").rss("http://feeds.feedburner.com/premiumpixels")
+      })
+    </script>
+  </head>
+  <body>
+    <div id="rss-feeds"></div>
+  </body>
+</html>
