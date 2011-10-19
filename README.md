@@ -87,10 +87,10 @@ There are some predefined tokens:
 
 You can also define custom tokens using the ```tokens``` option:
 
-  $('#foo').rss(url, {
-    template: "{foo}, {bar}",
-    tokens: {
-      foo: function(entry){ return "dynamic-stuff: " + entry.title },
-      bar: "static"
-    }
-  })
+    $('#foo').rss(url, {
+      template: "{foo}, {bar}",
+      tokens: {
+        foo: function(entry){ return "dynamic-stuff: " + entry.title },
+        bar: "static"
+      }
+    })
