@@ -94,3 +94,8 @@ You can also define custom tokens using the ```tokens``` option:
         bar: "static"
       }
     })
+
+## Authors/Contributors
+
+- DaWanda GmbH
+- Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
