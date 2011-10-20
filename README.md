@@ -97,5 +97,5 @@ You can also define custom tokens using the ```tokens``` option:
 
 ## Authors/Contributors
 
-- DaWanda GmbH
+- DaWanda GmbH [Website](http://dawanda.com)
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
