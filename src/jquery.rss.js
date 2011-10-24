@@ -58,7 +58,8 @@
       shortBody:      entry.contentSnippet,
       bodyPlain:      entry.content.replace(/<\/?[^>]+>/gi, ''),
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
-      teaserImage:    entry.content.match(/(<img.*?>)/gi)[0]
+      teaserImage:    entry.content.match(/(<img.*?>)/gi)[0],
+      teaserImageUrl: entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1]
     }, this.options.tokens)
 
     var result = tokenMap[token.replace(/[\{\}]/g, '')]
