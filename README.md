@@ -84,6 +84,7 @@ There are some predefined tokens:
 - bodyPlain: the complete content of the post without html
 - shortBodyPlain: the shortened content of the post without html
 - teaserImage: the first image in the post's body
+- teaserImageUrl: the url of the first image in the post's body
 
 You can also define custom tokens using the ```tokens``` option:
 
