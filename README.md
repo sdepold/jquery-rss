@@ -68,8 +68,8 @@ The {title} token will get replaced by the actual title. So you will get this:
 
   <div class="rss-feeds">
     <ul>
-      <li>Titel 1</li>
-      <li>Titel 2</li>
+      <li>Title 1</li>
+      <li>Title 2</li>
     </ul>
   </div>
 
