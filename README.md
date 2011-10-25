@@ -97,6 +97,17 @@ You can also define custom tokens using the ```tokens``` option:
       }
     })
 
+Please make sure to NOT define infinite loops. The following example is really BAD:
+
+    $('#foo').rss(url, {
+      template: "{loop}",
+      tokens: {
+        whoops: function(entry, tokens) { return tokens.loop() }
+        loop: function(entry, tokens) { return tokens.whoops() }
+      }
+    })
+
+
 ## Authors/Contributors
 
 - DaWanda GmbH ([Website](http://dawanda.com))
