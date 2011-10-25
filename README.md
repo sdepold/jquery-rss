@@ -38,7 +38,7 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
       // default: {}
       tokens: {
         foo: 'bar',
-        bar: function(entry) { return entry.title }
+        bar: function(entry, tokens) { return entry.title }
       }
     })
 
@@ -89,10 +89,11 @@ There are some predefined tokens:
 You can also define custom tokens using the ```tokens``` option:
 
     $('#foo').rss(url, {
-      template: "{foo}, {bar}",
+      template: "{dynamic}, {static}, {re-use}",
       tokens: {
-        foo: function(entry){ return "dynamic-stuff: " + entry.title },
-        bar: "static"
+        dynamic: function(entry, tokens){ return "dynamic-stuff: " + entry.title },
+        "re-use": function(entry, tokens){ return encodeURIComponent(tokens.teaserImageUrl) },
+        static: "static"
       }
     })
 

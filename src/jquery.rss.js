@@ -65,7 +65,7 @@
     var result = tokenMap[token.replace(/[\{\}]/g, '')]
 
     if(result)
-      return ((typeof result == 'function') ? result(entry) : result)
+      return ((typeof result == 'function') ? result(entry, tokenMap) : result)
     else
       throw new Error('Unknown token: ' + token)
   }
