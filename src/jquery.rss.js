@@ -2,6 +2,7 @@
   var RSS = function(target, url, options) {
     this.target = target
     this.url = url
+    this.html = []
     this.options = jQuery.extend({
       ssl: false,
       limit: null,
@@ -28,22 +29,24 @@
       , templateMatch    = self.options.template.match(/\{entry\}(.*)\{\/entry\}/)
       , hasEntryTemplate = !!templateMatch
       , entryTemplate    = hasEntryTemplate ? templateMatch[1] : this.options.template
-      , html             = []
 
     this.load(function(data) {
       jQuery(data.responseData.feed.entries).each(function() {
         var entry     = this
           , entryHTML = entryTemplate
 
-        jQuery(entryTemplate.match(/(\{.*?\})/g)).each(function() {
-          var token = this.toString()
-          entryHTML = entryHTML.replace(token, self.getValueForToken(token, entry))
-        })
+        if(self.isRelevant(entry)) {
+          jQuery(entryTemplate.match(/(\{.*?\})/g)).each(function() {
+            var token = this.toString()
+            entryHTML = entryHTML.replace(token, self.getValueForToken(token, entry))
+          })
 
-        html.push(entryHTML)
+          self.html.push(entryHTML)
+        }
       })
 
-      html = html.join('\n')
+      var html = self.html.join("\n")
+
       if(hasEntryTemplate)
         html = self.options.template.replace(templateMatch[0], html)
       else
@@ -53,8 +56,22 @@
     })
   }
 
-  RSS.prototype.getValueForToken = function(token, entry) {
-    var tokenMap = jQuery.extend({
+  RSS.prototype.isRelevant = function(entry) {
+    var tokenMap = this.getTokenMap(entry)
+
+    if(this.options.filter) {
+      if(this.options.filterLimit && (this.options.filterLimit == this.html.length)) {
+        return false
+      } else {
+        return this.options.filter(entry, tokenMap)
+      }
+    } else {
+      return true
+    }
+  }
+
+  RSS.prototype.getTokenMap = function(entry) {
+    return jQuery.extend({
       url:            entry.link,
       author:         entry.author,
       date:           entry.publishedDate,
@@ -66,8 +83,11 @@
       teaserImage:    entry.content.match(/(<img.*?>)/gi)[0],
       teaserImageUrl: entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1]
     }, this.options.tokens)
+  }
 
-    var result = tokenMap[token.replace(/[\{\}]/g, '')]
+  RSS.prototype.getValueForToken = function(token, entry) {
+    var tokenMap = this.getTokenMap(entry)
+      , result   = tokenMap[token.replace(/[\{\}]/g, '')]
 
     if(result)
       return ((typeof result == 'function') ? result(entry, tokenMap) : result)

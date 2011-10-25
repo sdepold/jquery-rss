@@ -107,6 +107,20 @@ Please make sure to NOT define infinite loops. The following example is really B
       }
     })
 
+## Filtering
+
+The plugin also allows you to filter specific entries in order to only print them:
+
+    $("#foo").rss(url, {
+      limit: 100,
+      filterLimit: 10,
+      filter: function(entry, tokens) {
+        return tokens.title.indexOf('my filter') > -1
+      }
+    })
+
+This will request 100 entries via the Feed API and renders the first 10 matching entries.
+
 ## Minified version
 
 The source is minified via [http://jscompress.com].
