@@ -44,7 +44,12 @@
       })
 
       html = html.join('\n')
-      self.target.append(hasEntryTemplate ? self.options.template.replace(templateMatch[0], html) : jQuery(html))
+      if(hasEntryTemplate)
+        html = self.options.template.replace(templateMatch[0], html)
+      else
+        html = (jQuery(html).length == 0) ? jQuery("<div>" + html + "</div>") : jQuery(html)
+
+      self.target.append(html)
     })
   }
 
