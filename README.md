@@ -107,6 +107,9 @@ Please make sure to NOT define infinite loops. The following example is really B
       }
     })
 
+## Minified version
+
+The source is minified via [http://jscompress.com].
 
 ## Authors/Contributors
 
