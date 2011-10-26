@@ -31,7 +31,8 @@
       , entryTemplate    = hasEntryTemplate ? templateMatch[1] : this.options.template
 
     this.load(function(data) {
-      jQuery(data.responseData.feed.entries).each(function() {
+      self.entries = data.responseData.feed.entries
+      jQuery(self.entries).each(function() {
         var entry     = this
           , entryHTML = entryTemplate
 
@@ -81,18 +82,21 @@
       bodyPlain:      entry.content.replace(/<\/?[^>]+>/gi, ''),
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
       teaserImage:    entry.content.match(/(<img.*?>)/gi)[0],
-      teaserImageUrl: entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1]
+      teaserImageUrl: entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1],
+      index:          this.entries.indexOf(entry),
+      totalEntries:   this.entries.length
     }, this.options.tokens)
   }
 
-  RSS.prototype.getValueForToken = function(token, entry) {
+  RSS.prototype.getValueForToken = function(_token, entry) {
     var tokenMap = this.getTokenMap(entry)
-      , result   = tokenMap[token.replace(/[\{\}]/g, '')]
+      , token    = _token.replace(/[\{\}]/g, '')
+      , result   = tokenMap[token]
 
-    if(result)
+    if(typeof result != 'undefined')
       return ((typeof result == 'function') ? result(entry, tokenMap) : result)
     else
-      throw new Error('Unknown token: ' + token)
+      throw new Error('Unknown token: ' + _token)
   }
 
   $.fn.rss = function(url, options) {
