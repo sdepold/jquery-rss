@@ -85,6 +85,8 @@ There are some predefined tokens:
 - shortBodyPlain: the shortened content of the post without html
 - teaserImage: the first image in the post's body
 - teaserImageUrl: the url of the first image in the post's body
+- index: the index of the current entry
+- totalEntries: the total count of the entries
 
 You can also define custom tokens using the ```tokens``` option:
 
