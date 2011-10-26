@@ -1,0 +1,20 @@
+{
+  "author": "DaWanda GmbH <sascha@dawanda.com> (http://dawanda.com)",
+  "name": "jquery-rss",
+  "description": "An easy-to-use rss plugin for jquery with templating.",
+  "version": "0.1.1",
+  "homepage": "https://github.com/dawanda/jquery-rss",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dawanda/jquery-rss.git"
+  },
+  "main": "src/jquery.rss.js",
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
+  "engines": {
+    "node": ">=v0.4.8"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
