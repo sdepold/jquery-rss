@@ -83,11 +83,11 @@
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
       teaserImage:    function(entry){
         try { return entry.content.match(/(<img.*?>)/gi)[0] }
-        catch(e) { return null }
+        catch(e) { return "" }
       },
       teaserImageUrl: function(entry) {
         try { return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1] }
-        catch(e) { return null}
+        catch(e) { return "" }
       },
       index:          this.entries.indexOf(entry),
       totalEntries:   this.entries.length
