@@ -81,8 +81,14 @@
       shortBody:      entry.contentSnippet,
       bodyPlain:      entry.content.replace(/<\/?[^>]+>/gi, ''),
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
-      teaserImage:    entry.content.match(/(<img.*?>)/gi)[0],
-      teaserImageUrl: entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1],
+      teaserImage:    function(entry){
+        try { return entry.content.match(/(<img.*?>)/gi)[0] }
+        catch(e) { return null }
+      },
+      teaserImageUrl: function(entry) {
+        try { return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1] }
+        catch(e) { return null}
+      },
       index:          this.entries.indexOf(entry),
       totalEntries:   this.entries.length
     }, this.options.tokens)
