@@ -17,6 +17,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "jasmine-node": "=1.0.12"
+    "jasmine-node": "=1.0.11"
   }
 }
