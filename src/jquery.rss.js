@@ -89,7 +89,7 @@
         try { return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1] }
         catch(e) { return "" }
       },
-      index:          this.entries.indexOf(entry),
+      index:          jQuery.inArray(entry, this.entries),
       totalEntries:   this.entries.length
     }, this.options.tokens)
   }

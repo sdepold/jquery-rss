@@ -1,3 +1,6 @@
+# v0.2.2
+- [BUG] fixed Array#indexOf IE bug
+
 # v0.2.1
 - [BUG] catch failures while extracting images
 
