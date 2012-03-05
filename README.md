@@ -39,7 +39,10 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
       tokens: {
         foo: 'bar',
         bar: function(entry, tokens) { return entry.title }
-      }
+      },
+	  
+	  // User callback function called after feeds are successfully loaded.
+	  callback: function(){}
     })
 
 ## Templating

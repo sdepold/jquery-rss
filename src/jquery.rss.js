@@ -1,5 +1,5 @@
 (function($) {
-  var RSS = function(target, url, options) {
+  var RSS = function(target, url, options, callback) {
     this.target = target
     this.url = url
     this.html = []
@@ -10,6 +10,7 @@
       template: "<ul>{entry}<li><a href='{url}'>[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>{/entry}</ul>",
       tokens: {}
     }, options || {})
+    this.callback = callback
   }
 
   RSS.prototype.load = function(callback) {
@@ -54,6 +55,9 @@
         html = (jQuery(html).length == 0) ? jQuery("<div>" + html + "</div>") : jQuery(html)
 
       self.target.append(html)
+      if ($.isFunction(self.callback)) {
+    	  self.callback.call(this);
+      }
     })
   }
 
@@ -105,7 +109,7 @@
       throw new Error('Unknown token: ' + _token)
   }
 
-  $.fn.rss = function(url, options) {
-    new RSS(this, url, options).render()
+  $.fn.rss = function(url, options, callback) {
+    new RSS(this, url, options, callback).render()
   }
 })(jQuery)
