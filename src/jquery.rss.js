@@ -85,16 +85,16 @@
       shortBody:      entry.contentSnippet,
       bodyPlain:      entry.content.replace(/<\/?[^>]+>/gi, ''),
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
-      teaserImage:    function(entry){
+      index:          jQuery.inArray(entry, this.entries),
+      totalEntries:   this.entries.length,
+      teaserImage:    (function(entry){
         try { return entry.content.match(/(<img.*?>)/gi)[0] }
         catch(e) { return "" }
-      },
-      teaserImageUrl: function(entry) {
+      })(entry),
+      teaserImageUrl: (function(entry) {
         try { return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1] }
         catch(e) { return "" }
-      },
-      index:          jQuery.inArray(entry, this.entries),
-      totalEntries:   this.entries.length
+      })(entry)
     }, this.options.tokens)
   }
 
