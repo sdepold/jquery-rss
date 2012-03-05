@@ -34,9 +34,13 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // default: false
         ssl: true,
 
-        // template for the html transformation
-        // default: "<ul>{entry}<li><a href='{url}'>[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>{/entry}</ul>"
-        template: "<div class='feed-container'>{entry}<p>{title}</p>{/entry}</div>",
+        // outer template for the html transformation
+        // default: "<ul>{entries}</ul>"
+        layoutTemplate: '<div class='feed-container'>{entries}</div>',
+
+        // inner template for each entry
+        // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
+        entryTemplate: '<p>{title}</p>',
 
         // additional token definition for in-template-usage
         // default: {}
