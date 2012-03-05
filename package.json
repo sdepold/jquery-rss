@@ -8,6 +8,10 @@
     "type": "git",
     "url": "git://github.com/dawanda/jquery-rss.git"
   },
+  "contributors": [
+    { "name": "Sascha Depold", "email": "sascha@depold.com" },
+    { "name": "Steffen Schröder", "email": "steffen@schroeder-blog.de" }
+  ],
   "main": "src/jquery.rss.js",
   "scripts": {
     "test": "jasmine-node spec"
