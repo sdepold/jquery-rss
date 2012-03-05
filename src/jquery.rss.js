@@ -7,7 +7,8 @@
       ssl: false,
       limit: null,
       key: null,
-      template: "<ul>{entry}<li><a href='{url}'>[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>{/entry}</ul>",
+      layoutTemplate: '<ul>{entries}</ul>',
+      entryTemplate: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>',
       tokens: {},
       outputMode: 'json'
     }, options || {})
@@ -27,13 +28,12 @@
   }
 
   RSS.prototype.render = function() {
-    var self             = this
-      , templateMatch    = self.options.template.match(/\{entry\}(.*)\{\/entry\}/)
-      , hasEntryTemplate = !!templateMatch
-      , entryTemplate    = hasEntryTemplate ? templateMatch[1] : this.options.template
+    var self          = this
+      , entryTemplate = this.options.entryTemplate
 
     this.load(function(data) {
       self.entries = data.responseData.feed.entries
+
       jQuery(self.entries).each(function() {
         var entry     = this
           , entryHTML = entryTemplate
@@ -50,12 +50,13 @@
 
       var html = self.html.join("\n")
 
-      if(hasEntryTemplate)
-        html = self.options.template.replace(templateMatch[0], html)
+      if(!!self.options.entryTemplate)
+        html = self.options.layoutTemplate.replace("{entries}", html)
       else
         html = (jQuery(html).length == 0) ? jQuery("<div>" + html + "</div>") : jQuery(html)
 
       self.target.append(html)
+
       if ($.isFunction(self.callback)) {
     	  self.callback.call(this);
       }
