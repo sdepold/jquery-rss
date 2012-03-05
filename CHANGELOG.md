@@ -1,3 +1,12 @@
+# v0.4.0
+- [FEATURE] added possibility to define the output method of google request
+- [FEATURE] separated layout template from entry template (thanks to ChaosSteffen)
+
+# v0.3.0
+- [IMPROVEMENT] evaluate token map before passing it to custom token functions
+- [GENERAL] moved minified version into dist folder (thanks to markrambow)
+- [FEATURE] added callback, which is triggered after rendering of all entries (thanks to cm0s)
+
 # v0.2.2
 - [BUG] fixed Array#indexOf IE bug
 
