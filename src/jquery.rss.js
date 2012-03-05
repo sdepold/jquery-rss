@@ -8,7 +8,8 @@
       limit: null,
       key: null,
       template: "<ul>{entry}<li><a href='{url}'>[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>{/entry}</ul>",
-      tokens: {}
+      tokens: {},
+      outputMode: 'json'
     }, options || {})
     this.callback = callback
   }
@@ -16,7 +17,7 @@
   RSS.prototype.load = function(callback) {
     var apiProtocol = "http" + (this.options.ssl ? "s" : "")
       , apiHost     = apiProtocol + "://ajax.googleapis.com/ajax/services/feed/load"
-      , apiUrl      = apiHost + "?v=1.0&output=json_xml&callback=?&q=" + encodeURIComponent(this.url)
+      , apiUrl      = apiHost + "?v=1.0&output=" + this.options.outputMode + "&callback=?&q=" + encodeURIComponent(this.url)
       , self        = this
 
     if (this.options.limit != null) apiUrl += "&num=" + this.options.limit;

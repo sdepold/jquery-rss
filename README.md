@@ -26,10 +26,12 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
     $("#rss-feeds").rss(
       "http://feeds.feedburner.com/premiumpixels",
       {
-        // how many entries do you want? default: 4
+        // how many entries do you want?
+        // default: 4
         limit: 10,
 
-        // will request the API via https; default: false
+        // will request the API via https
+        // default: false
         ssl: true,
 
         // template for the html transformation
@@ -41,7 +43,11 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         tokens: {
           foo: 'bar',
           bar: function(entry, tokens) { return entry.title }
-        }
+        },
+
+        // output mode of google feed loader request
+        // default: 'json'
+        outputMode: 'json_xml'
       },
 
       // User callback function called after feeds are successfully loaded.
