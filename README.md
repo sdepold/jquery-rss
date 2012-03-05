@@ -23,27 +23,30 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
 
 ## Options
 
-    $("#rss-feeds").rss("http://feeds.feedburner.com/premiumpixels", {
-      // how many entries do you want? default: 4
-      limit: 10,
+    $("#rss-feeds").rss(
+      "http://feeds.feedburner.com/premiumpixels",
+      {
+        // how many entries do you want? default: 4
+        limit: 10,
 
-      // will request the API via https; default: false
-      ssl: true,
+        // will request the API via https; default: false
+        ssl: true,
 
-      // template for the html transformation
-      // default: "<ul>{entry}<li><a href='{url}'>[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>{/entry}</ul>"
-      template: "<div class='feed-container'>{entry}<p>{title}</p>{/entry}</div>",
+        // template for the html transformation
+        // default: "<ul>{entry}<li><a href='{url}'>[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>{/entry}</ul>"
+        template: "<div class='feed-container'>{entry}<p>{title}</p>{/entry}</div>",
 
-      // additional token definition for in-template-usage
-      // default: {}
-      tokens: {
-        foo: 'bar',
-        bar: function(entry, tokens) { return entry.title }
+        // additional token definition for in-template-usage
+        // default: {}
+        tokens: {
+          foo: 'bar',
+          bar: function(entry, tokens) { return entry.title }
+        }
       },
-	  
-	  // User callback function called after feeds are successfully loaded.
-	  callback: function(){}
-    })
+
+      // User callback function called after feeds are successfully loaded.
+      function callback() {}
+    )
 
 ## Templating
 
