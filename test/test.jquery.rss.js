@@ -44,4 +44,21 @@ describe('jquery.rss', function() {
       done()
     })
   })
+
+  it("supports custom tokens", function(done) {
+    $container.rss('http://feeds.feedburner.com/dawanda', {
+      limit: 1,
+      entryTemplate: '<li>{myCustomStaticToken} {myCustomDynamicToken}</li>',
+      tokens: {
+        myCustomStaticToken: 'static',
+        myCustomDynamicToken: function() {
+          return 'dynamic'
+        }
+      }
+    }, function() {
+      var renderedContent = $container.html().split('\n').map(function(s){ return s.trim() }).join('').trim()
+      expect(renderedContent).to.match(new RegExp("<ul><li>static dynamic</li></ul>"))
+      done()
+    })
+  })
 })
