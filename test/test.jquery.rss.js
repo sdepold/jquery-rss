@@ -3,6 +3,7 @@ describe('jquery.rss', function() {
 
   beforeEach(function() {
     $container = $('#jquery-rss')
+    $container.html('')
   })
 
   it('renders an unordered list by default', function(done) {
