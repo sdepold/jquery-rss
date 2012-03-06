@@ -39,12 +39,8 @@
           , entryHTML = entryTemplate
 
         if(self.isRelevant(entry)) {
-          jQuery(entryTemplate.match(/(\{.*?\})/g)).each(function() {
-            var token = this.toString()
-            entryHTML = entryHTML.replace(token, self.getValueForToken(token, entry))
-          })
-
-          self.html.push(entryHTML)
+          var evaluatedString = self.evaluateStringForEntry(entryTemplate, entry)
+          self.html.push(evaluatedString)
         }
       })
 
@@ -58,9 +54,21 @@
       self.target.append(html)
 
       if ($.isFunction(self.callback)) {
-    	  self.callback.call(this);
+        self.callback.call(this);
       }
     })
+  }
+
+  RSS.prototype.evaluateStringForEntry = function(string, entry) {
+    var result = string
+      , self   = this
+
+    jQuery(string.match(/(\{.*?\})/g)).each(function() {
+      var token = this.toString()
+      result = result.replace(token, self.getValueForToken(token, entry))
+    })
+
+    return result
   }
 
   RSS.prototype.isRelevant = function(entry) {
