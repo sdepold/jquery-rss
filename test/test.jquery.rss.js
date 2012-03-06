@@ -1,7 +1,14 @@
 describe('jquery.rss', function() {
-  it('does things', function(done) {
-    $('jquery-rss').rss('http://feeds.feedburner.com/dawanda', {}, function() {
-      expect(1).to.equal(1)
+  var $container
+
+  beforeEach(function() {
+    $container = $('#jquery-rss')
+  })
+
+  it('renders an unordered list by default', function(done) {
+    $container.rss('http://feeds.feedburner.com/dawanda', {}, function() {
+      var renderedContent = $container.html().replace(/\n/g, '')
+      expect(renderedContent).to.match(/<ul>.*<\/ul>/)
       done()
     })
   })
