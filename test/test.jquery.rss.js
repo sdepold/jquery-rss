@@ -48,7 +48,7 @@ describe('jquery.rss', function() {
   it("supports custom tokens", function(done) {
     $container.rss('http://feeds.feedburner.com/dawanda', {
       limit: 1,
-      entryTemplate: '<l2i>{myCustomStaticToken} {myCustomDynamicToken}</li>',
+      entryTemplate: '<li>{myCustomStaticToken} {myCustomDynamicToken}</li>',
       tokens: {
         myCustomStaticToken: 'static',
         myCustomDynamicToken: function() {
