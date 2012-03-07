@@ -153,4 +153,4 @@ The source is minified via [http://jscompress.com].
 
 - DaWanda GmbH ([Website](http://dawanda.com))
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
-- Steffen Schröder
+- Steffen Schröder  ([Twitter](http://twitter.com/ChaosSteffen) | [Github](http://github.com/ChaosSteffen) | [Website](http://schroeder-blog.de))
