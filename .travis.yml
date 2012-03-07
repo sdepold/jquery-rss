@@ -1,5 +1,5 @@
 script:
-  - "npm test"
+  - "phantomjs test/index.js"
 
 notifications:
   email:
