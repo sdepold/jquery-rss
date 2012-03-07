@@ -21,7 +21,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "=0.14.0",
+    "mocha": "git://github.com/sdepold/mocha.git#d4d55d353b4ebb2e31e0c653b30e2b95371e4e7e",
     "expect.js": "=0.1.2"
   }
 }
