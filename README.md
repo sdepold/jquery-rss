@@ -139,6 +139,12 @@ The plugin also allows you to filter specific entries in order to only print the
 
 This will request 100 entries via the Feed API and renders the first 10 matching entries.
 
+## Testing
+
+The test suite uses Mocha in the browser. Furthermore we are running the test suite with PhantomJS.
+In order to run the tests, you need to have the phantomjs binary (http://code.google.com/p/phantomjs/downloads/list)
+in the PATH and run `npm test` in the root folder.
+
 ## Minified version
 
 The source is minified via [http://jscompress.com].
@@ -147,3 +153,4 @@ The source is minified via [http://jscompress.com].
 
 - DaWanda GmbH ([Website](http://dawanda.com))
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
+- Steffen Schröder
