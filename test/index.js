@@ -2,7 +2,6 @@ var page = new WebPage()
   , url  = encodeURI('file://' + require('fs').absolute('test/index.html'))
 
 page.open(url, function(status) {
-  console.log('asd')
   if (status !== "success") {
     console.log("Unable to access network");
     phantom.exit(1);
