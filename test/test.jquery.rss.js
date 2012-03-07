@@ -18,7 +18,7 @@ describe('jquery.rss', function() {
     $container.rss('http://feeds.feedburner.com/dawanda', {
       limit: 2
     }, function() {
-      expect(jQuery('li', $container)).to.have.length(3)
+      expect(jQuery('li', $container)).to.have.length(2)
       done()
     })
   })

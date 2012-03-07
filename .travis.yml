@@ -4,8 +4,7 @@ before_script:
   - sleep 5
 
 script:
-  - "phantomjs --version"
-  - "echo `pwd`/test/index.js && phantomjs `pwd`/test/index.js"
+  - "npm test"
 
 notifications:
   email:
