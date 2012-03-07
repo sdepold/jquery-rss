@@ -14,7 +14,7 @@
   ],
   "main": "src/jquery.rss.js",
   "scripts": {
-    "test": "jasmine-node spec"
+    "test": "node test/index.js"
   },
   "engines": {
     "node": ">=v0.4.8"
@@ -22,6 +22,7 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "=0.14.0",
-    "expect.js": "=0.1.2"
+    "expect.js": "=0.1.2",
+    "phantom": "=0.3.3"
   }
 }
