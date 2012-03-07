@@ -1,5 +1,5 @@
 script:
-  - "phantomjs"
+  - "phantomjs --version"
   - "echo `pwd`/test/index.js && phantomjs `pwd`/test/index.js"
 
 notifications:
