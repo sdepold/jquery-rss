@@ -38,7 +38,12 @@ var checkMochaResults = function(phantom, page) {
     page.evaluate(function() {
       return document.getElementsByClassName("test fail").length
     }, function(failCount) {
-      phantom.exit(failCount == 0 ? 0 : 1)
+      var exitCode = ((failCount == 0) ? 0 : 1)
+
+      console.log('Failed specs: ' + failCount)
+      console.log('Exit code: ' + exitCode)
+
+      phantom.exit(exitCode)
     })
   })
 }
