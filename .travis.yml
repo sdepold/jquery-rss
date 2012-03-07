@@ -1,5 +1,5 @@
 script:
-  - "phantomjs test/index.js"
+  - "echo pwd && phantomjs test/index.js"
 
 notifications:
   email:
