@@ -56,7 +56,7 @@
       self.target.append(html)
 
       if ($.isFunction(self.callback)) {
-        self.callback.call(this);
+        self.callback.call(self);
       }
     })
   }
