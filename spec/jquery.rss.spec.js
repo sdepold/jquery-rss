@@ -169,6 +169,18 @@ describe('jquery.rss', function() {
         it("strips unsecure body tag", function() {
           this.fakeGetJSON("<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert(\"XSS\")>")
         })
+
+        it("strips the unclosed script tag", function() {
+          this.fakeGetJSON("<SCRIPT SRC=http://ha.ckers.org/xss.js?<B>")
+        })
+
+        it("strips unclosed script tags without protocol in src", function() {
+          this.fakeGetJSON("<SCRIPT SRC=//ha.ckers.org/.j>")
+        })
+
+        it("//strips half open html/javascript xss vector", function() {
+          this.fakeGetJSON("<IMG SRC=\"javascript:alert('XSS')\"")
+        })
       })
 
       describe('> XSS 2 >', function() {
