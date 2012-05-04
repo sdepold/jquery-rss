@@ -20,16 +20,13 @@
   ],
   "main": "src/jquery.rss.js",
   "scripts": {
-    "test": "phantomjs test/index.js"
+    "test": "java -jar dist/compiler.jar src/jquery.rss.js --js_output_file=dist/jquery.rss.min.js && node_modules/.bin/buster-test"
   },
   "engines": {
     "node": ">=v0.4.8"
   },
-  "dependencies": {
-    "buster": "~0.5.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "mocha": "git://github.com/sdepold/mocha.git#d4d55d353b4ebb2e31e0c653b30e2b95371e4e7e",
-    "expect.js": "=0.1.2"
+    "buster": "~0.5.2"
   }
 }
