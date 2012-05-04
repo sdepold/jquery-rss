@@ -9,8 +9,14 @@
     "url": "git://github.com/dawanda/jquery-rss.git"
   },
   "contributors": [
-    { "name": "Sascha Depold", "email": "sascha@depold.com" },
-    { "name": "Steffen Schröder", "email": "steffen@schroeder-blog.de" }
+    {
+      "name": "Sascha Depold",
+      "email": "sascha@depold.com"
+    },
+    {
+      "name": "Steffen Schröder",
+      "email": "steffen@schroeder-blog.de"
+    }
   ],
   "main": "src/jquery.rss.js",
   "scripts": {
@@ -19,7 +25,9 @@
   "engines": {
     "node": ">=v0.4.8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "buster": "~0.5.2"
+  },
   "devDependencies": {
     "mocha": "git://github.com/sdepold/mocha.git#d4d55d353b4ebb2e31e0c653b30e2b95371e4e7e",
     "expect.js": "=0.1.2"
