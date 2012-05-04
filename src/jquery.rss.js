@@ -95,7 +95,7 @@
       title:          entry.title,
       body:           entry.content,
       shortBody:      entry.contentSnippet,
-      bodyPlain:      entry.content.replace(/<\/?[^>]+>/gi, ''),
+      bodyPlain:      entry.content.replace(/<script.*<\/script>/gi, '').replace(/<\/?[^>]+>/gi, ''),
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
       index:          jQuery.inArray(entry, this.entries),
       totalEntries:   this.entries.length,
