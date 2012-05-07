@@ -9,7 +9,7 @@ module.exports = {
       'spec/*.spec.js'
     ],
     sources: [
-      "src/jquery.rss.js"
+      "dist/jquery.rss.min.js"
     ]
   }
 }
