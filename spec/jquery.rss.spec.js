@@ -177,10 +177,6 @@ describe('jquery.rss', function() {
         it("strips unclosed script tags without protocol in src", function() {
           this.fakeGetJSON("<SCRIPT SRC=//ha.ckers.org/.j>")
         })
-
-        it("//strips half open html/javascript xss vector", function() {
-          this.fakeGetJSON("<IMG SRC=\"javascript:alert('XSS')\"")
-        })
       })
 
       describe('> XSS 2 >', function() {
@@ -192,6 +188,14 @@ describe('jquery.rss', function() {
           name: "strips script tags with extraneous open brackets",
           test: "<<SCRIPT>alert(\"XSS\");//<</SCRIPT>",
           result: "&lt;"
+        }, {
+          name: 'strips half open html/javascript xss vector',
+          test: "<IMG SRC=\"javascript:alert('XSS')\"",
+          result: ' SRC="javascript:alert(\'XSS\')"'
+        }, {
+          name: 'strips half open iframe tags',
+          test: "<iFraMe SRC=\"javascript:alert('XSS')\"",
+          result: ' SRC="javascript:alert(\'XSS\')"'
         }]
 
         tests.forEach(function(test) {
