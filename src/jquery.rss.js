@@ -100,7 +100,7 @@
 
       bodyPlain:      (function(entry) {
         var result = entry.content
-          .replace(/<script.*<\/script>/gi, '')
+          .replace(/<script[\\r\\\s\S]*<\/script>/mgi, '')
           .replace(/<\/?[^>]+>/gi, '')
 
         for(var i = 0; i < RSS.htmlTags.length; i++) {

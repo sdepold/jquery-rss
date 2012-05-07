@@ -177,6 +177,30 @@ describe('jquery.rss', function() {
         it("strips unclosed script tags without protocol in src", function() {
           this.fakeGetJSON("<SCRIPT SRC=//ha.ckers.org/.j>")
         })
+
+        it("strips script tags with line breaks in between", function() {
+          this.fakeGetJSON("<SCRIPT>a=/XSS/\nalert(a.source)</SCRIPT>")
+        })
+
+        it("strips script tags when the come after a closing title tag", function() {
+          this.fakeGetJSON("</TITLE><SCRIPT>alert(\"XSS\");</SCRIPT>")
+        })
+
+        it("strips input tags with javascript in src attribute", function() {
+          this.fakeGetJSON("<INPUT TYPE=\"IMAGE\" SRC=\"javascript:alert('XSS');\">")
+        })
+
+        it("strips body tag with background attribute", function() {
+          this.fakeGetJSON("<BODY BACKGROUND=\"javascript:alert('XSS')\">")
+        })
+
+        it("strips body tag with onload attribute", function() {
+          this.fakeGetJSON("<BODY ONLOAD=alert('XSS')>")
+        })
+
+        it("strips tags with html quotation", function() {
+          this.fakeGetJSON("<SCRIPT a=\">\" SRC=\"http://ha.ckers.org/xss.js\"></SCRIPT>")
+        })
       })
 
       describe('> XSS 2 >', function() {
@@ -196,6 +220,14 @@ describe('jquery.rss', function() {
           name: 'strips half open iframe tags',
           test: "<iFraMe SRC=\"javascript:alert('XSS')\"",
           result: ' SRC="javascript:alert(\'XSS\')"'
+        }, {
+          name: 'strips half open iframe tag with double open bracket',
+          test: '<iframe src=http://ha.ckers.org/scriptlet.html <',
+          result: ' src=http://ha.ckers.org/scriptlet.html &lt;'
+        }, {
+          name: 'strips meta tags with content',
+          test: "<META HTTP-EQUIV=\"Link\" Content=\"<http://ha.ckers.org/xss.css>; REL=stylesheet\">",
+          result: "; REL=stylesheet\"&gt;"
         }]
 
         tests.forEach(function(test) {
