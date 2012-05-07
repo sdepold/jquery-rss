@@ -8,6 +8,7 @@ before_script:
   - firefox http://localhost:1111/slaves/646ba36f-671d-4f03-896a-161d7e00648d/browser &
   - sleep 5
 
+
 script:
   - "npm test"
 
