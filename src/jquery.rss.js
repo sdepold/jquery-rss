@@ -17,6 +17,8 @@
     this.callback = callback
   }
 
+  RSS.htmlTags = ["doctype", "html", "head", "title", "base", "link", "meta", "style", "script", "noscript", "body", "article", "nav", "aside", "section", "header", "footer", "h1-h6", "hgroup", "address", "p", "hr", "pre", "blockquote", "ol", "ul", "li", "dl", "dt", "dd", "figure", "figcaption", "div", "table", "caption", "thead", "tbody", "tfoot", "tr", "th", "td", "col", "colgroup", "form", "fieldset", "legend", "label", "input", "button", "select", "datalist", "optgroup", "option", "textarea", "keygen", "output", "progress", "meter", "details", "summary", "command", "menu", "del", "ins", "img", "iframe", "embed", "object", "param", "video", "audio", "source", "canvas", "track", "map", "area", "a", "em", "strong", "i", "b", "u", "s", "small", "abbr", "q", "cite", "dfn", "sub", "sup", "time", "code", "kbd", "samp", "var", "mark", "bdi", "bdo", "ruby", "rt", "rp", "span", "br", "wbr"]
+
   RSS.prototype.load = function(callback) {
     var apiProtocol = "http" + (this.options.ssl ? "s" : "")
       , apiHost     = apiProtocol + "://ajax.googleapis.com/ajax/services/feed/load"
@@ -95,14 +97,28 @@
       title:          entry.title,
       body:           entry.content,
       shortBody:      entry.contentSnippet,
-      bodyPlain:      entry.content.replace(/<script.*<\/script>/gi, '').replace(/<\/?[^>]+>/gi, ''),
+
+      bodyPlain:      (function(entry) {
+        var result = entry.content
+          .replace(/<script.*<\/script>/gi, '')
+          .replace(/<\/?[^>]+>/gi, '')
+
+        for(var i = 0; i < RSS.htmlTags.length; i++) {
+          result = result.replace(new RegExp('<' + RSS.htmlTags[i], 'gi'), '')
+        }
+
+        return result
+      })(entry),
+
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
       index:          jQuery.inArray(entry, this.entries),
       totalEntries:   this.entries.length,
+
       teaserImage:    (function(entry){
         try { return entry.content.match(/(<img.*?>)/gi)[0] }
         catch(e) { return "" }
       })(entry),
+
       teaserImageUrl: (function(entry) {
         try { return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1] }
         catch(e) { return "" }
