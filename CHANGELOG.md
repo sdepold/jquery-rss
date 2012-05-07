@@ -1,3 +1,11 @@
+# v1.1.0
+- [TEST] switched to busterjs for tests
+- [TEST] implemented tests for XSS protection
+- [FEATURE] XSS protection
+
+# v1.0.0
+- [TEST] complete test coverage with mocha
+
 # v0.4.0
 - [FEATURE] added possibility to define the output method of google request
 - [FEATURE] separated layout template from entry template (thanks to ChaosSteffen)
