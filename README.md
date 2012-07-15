@@ -136,13 +136,7 @@ This will request 100 entries via the Feed API and renders the first 10 matching
 
 ## Testing
 
-The test suite uses Mocha in the browser. Furthermore we are running the test suite with PhantomJS.
-In order to run the tests, you need to have the phantomjs binary (http://code.google.com/p/phantomjs/downloads/list)
-in the PATH and run `npm test` in the root folder.
-
-## Minified version
-
-The source is minified via [http://jscompress.com].
+The test suite is using BusterJS. To execute the tests you need to run a buster server, capture a browser and finally do `npm test`. The server can be started via `node_modules/.bin/buster server`. Afterwards open `http://localhost:1111/capture`.
 
 ## Authors/Contributors
 
