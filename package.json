@@ -29,6 +29,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "buster": "~0.5.2"
+    "buster": "~0.6.0"
   }
 }
