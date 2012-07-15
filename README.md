@@ -60,34 +60,22 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
 
 ## Templating
 
-As seen in the options, you can specify a template in order to transform the json objects into HTML.
-The basic format of that template is:
+As seen in the options, you can specify a template in order to transform the json objects into HTML. In order to that, you can either define the outer template (which describes the html around the entries) or the entry template (which describes the html of an entry).
 
-    "<outer-html>{entry}<entry-html></entry-html>{/entry}</outer-html>"
+The basic format of those templates are:
 
-Using such a format, you can specify the structure of the entry-wise HTML, as well as the surrounding one.
-If you specify a template, which has no "entry"-tokens, the templates gets treated as entry-wise template without
-surrounding stuff.
+    # layoutTemplate:
+    "<outer-html>{entries}</outer-html>"
 
-So, let's say you have specified a limit of 2. Using the upper pseudo html. This will result in the following:
+    # entryTemplate:
+    "<any-html>{token1}{token2}</any-html>"
+
+So, let's say you have specified a limit of 2, using the upper pseudo html. This will result in the following:
 
     <outer-html>
-      <entry-html></entry-html>
-      <entry-html></entry-html>
+      <any-html>{token1}{token2}</any-html>
+      <any-html>{token1}{token2}</any-html>
     </outer-html>
-
-In order to get values for each entry, you can do something like this:
-
-    "<div class='rss-feeds'><ul>{entry}<li>{title}</li>{/entry}</ul></div>"
-
-The {title} token will get replaced by the actual title. So you will get this:
-
-  <div class="rss-feeds">
-    <ul>
-      <li>Title 1</li>
-      <li>Title 2</li>
-    </ul>
-  </div>
 
 There are some predefined tokens:
 
@@ -107,7 +95,7 @@ There are some predefined tokens:
 You can also define custom tokens using the ```tokens``` option:
 
     $('#foo').rss(url, {
-      template: "{dynamic}, {static}, {re-use}",
+      entryTemplate: "{dynamic}, {static}, {re-use}",
       tokens: {
         dynamic: function(entry, tokens){ return "dynamic-stuff: " + entry.title },
         "re-use": function(entry, tokens){ return encodeURIComponent(tokens.teaserImageUrl) },
@@ -118,11 +106,18 @@ You can also define custom tokens using the ```tokens``` option:
 Please make sure to NOT define infinite loops. The following example is really BAD:
 
     $('#foo').rss(url, {
-      template: "{loop}",
+      entryTemplate: "{loop}",
       tokens: {
         whoops: function(entry, tokens) { return tokens.loop() }
         loop: function(entry, tokens) { return tokens.whoops() }
       }
+    })
+
+Here is a real-world example:
+
+    $('#foo').rss(url, {
+      layoutTemplate: "<table><tr><th>Title</th></tr>{entries}</table>",
+      entryTemplate:  "<tr><td>{title}</td></tr>"
     })
 
 ## Filtering
