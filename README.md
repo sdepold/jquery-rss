@@ -38,7 +38,7 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
 
         // outer template for the html transformation
         // default: "<ul>{entries}</ul>"
-        valid values: any string
+        // valid values: any string
         layoutTemplate: '<div class='feed-container'>{entries}</div>',
 
         // inner template for each entry
