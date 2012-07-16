@@ -28,22 +28,27 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
       {
         // how many entries do you want?
         // default: 4
+        // valid values: any integer
         limit: 10,
 
         // will request the API via https
         // default: false
+        // valid values: false, true
         ssl: true,
 
         // outer template for the html transformation
         // default: "<ul>{entries}</ul>"
+        valid values: any string
         layoutTemplate: '<div class='feed-container'>{entries}</div>',
 
         // inner template for each entry
         // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
+        // valid values: any string
         entryTemplate: '<p>{title}</p>',
 
         // additional token definition for in-template-usage
         // default: {}
+        // valid values: any object/hash
         tokens: {
           foo: 'bar',
           bar: function(entry, tokens) { return entry.title }
@@ -51,10 +56,17 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
 
         // output mode of google feed loader request
         // default: 'json'
-        outputMode: 'json_xml'
+        // valid values: 'json', 'json_xml'
+        outputMode: 'json_xml',
+
+        // the effect, which is used to let the entries appear
+        // default: 'show'
+        // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
+        effect: 'slideFastSynced'
       },
 
-      // User callback function called after feeds are successfully loaded.
+      // callback function
+      // called after feeds are successfully loaded and after animations are done
       function callback() {}
     )
 
