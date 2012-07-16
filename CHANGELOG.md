@@ -1,3 +1,6 @@
+# v1.2.0
+- [FEATURE] added possibility to define effects for the appearance of entries
+
 # v1.1.0
 - [TEST] switched to busterjs for tests
 - [TEST] implemented tests for XSS protection
