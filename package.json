@@ -2,7 +2,7 @@
   "author": "DaWanda GmbH <sascha@dawanda.com> (http://dawanda.com)",
   "name": "jquery-rss",
   "description": "An easy-to-use rss plugin for jquery with templating.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "homepage": "https://github.com/dawanda/jquery-rss",
   "keywords": ["rss", "jquery", "ender"],
   "ender": "noop",
