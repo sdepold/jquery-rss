@@ -66,7 +66,7 @@
         target.append($html)
       } else {
         $html.css({ display: 'none' })
-        self.target.append($html)
+        target.append($html)
         self.applyEffect($html, self.options.effect)
       }
     })
