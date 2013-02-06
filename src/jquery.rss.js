@@ -16,7 +16,10 @@
       entryTemplate: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>',
       tokens: {},
       outputMode: 'json',
-      effect: 'show'
+      effect: 'show',
+      callbackWrongURL: function() {
+        throw new Error("jQuery RSS: url don't link to RSS-Feed")
+      }
     }, options || {})
   }
 
@@ -38,20 +41,24 @@
     var self          = this
 
     this.load(function(data) {
-      self.entries = data.responseData.feed.entries
-
-      var html = self.generateHTMLForEntries()
-
-      self.target.append(html.layout)
-
-      if (html.entries.length !== 0) {
-        self.appendEntriesAndApplyEffects(html.layout, html.entries)
-      }
-
-      if (self.effectQueue.length > 0) {
-        self.executeEffectQueue(self.callback)
-      } else {
-        $.isFunction(self.callback) && self.callback.call(self);
+      try {
+        self.entries = data.responseData.feed.entries
+  
+        var html = self.generateHTMLForEntries()
+  
+        self.target.append(html.layout)
+  
+        if (html.entries.length !== 0) {
+          self.appendEntriesAndApplyEffects(html.layout, html.entries)
+        }
+  
+        if (self.effectQueue.length > 0) {
+          self.executeEffectQueue(self.callback)
+        } else {
+          $.isFunction(self.callback) && self.callback.call(self);
+        }
+      } catch(e) {
+        self.options.callbackWrongURL()
       }
     })
   }
