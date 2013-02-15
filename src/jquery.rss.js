@@ -17,7 +17,7 @@
       tokens: {},
       outputMode: 'json',
       effect: 'show',
-      callbackWrongURL: function() {
+      error: function() {
         throw new Error("jQuery RSS: url don't link to RSS-Feed")
       }
     }, options || {})
@@ -38,27 +38,28 @@
   }
 
   RSS.prototype.render = function() {
-    var self          = this
+    var self = this
 
     this.load(function(data) {
       try {
         self.entries = data.responseData.feed.entries
-  
-        var html = self.generateHTMLForEntries()
-  
-        self.target.append(html.layout)
-  
-        if (html.entries.length !== 0) {
-          self.appendEntriesAndApplyEffects(html.layout, html.entries)
-        }
-  
-        if (self.effectQueue.length > 0) {
-          self.executeEffectQueue(self.callback)
-        } else {
-          $.isFunction(self.callback) && self.callback.call(self);
-        }
       } catch(e) {
-        self.options.callbackWrongURL()
+        self.entries = []
+        self.options.error.call(self)
+      }
+
+      var html = self.generateHTMLForEntries()
+
+      self.target.append(html.layout)
+
+      if (html.entries.length !== 0) {
+        self.appendEntriesAndApplyEffects(html.layout, html.entries)
+      }
+
+      if (self.effectQueue.length > 0) {
+        self.executeEffectQueue(self.callback)
+      } else {
+        $.isFunction(self.callback) && self.callback.call(self);
       }
     })
   }
