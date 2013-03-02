@@ -59,7 +59,7 @@
   RSS.prototype.appendEntriesAndApplyEffects = function(target, entries) {
     var self = this
 
-    entries.forEach(function(entry) {
+    $.each(entries, function(idx, entry) {
       var $html = self.wrapContent(entry)
 
       if(self.options.effect === 'show') {
