@@ -16,7 +16,10 @@
       entryTemplate: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>',
       tokens: {},
       outputMode: 'json',
-      effect: 'show'
+      effect: 'show',
+      error: function() {
+        throw new Error("jQuery RSS: url don't link to RSS-Feed")
+      }
     }, options || {})
   }
 
@@ -35,10 +38,15 @@
   }
 
   RSS.prototype.render = function() {
-    var self          = this
+    var self = this
 
     this.load(function(data) {
-      self.entries = data.responseData.feed.entries
+      try {
+        self.entries = data.responseData.feed.entries
+      } catch(e) {
+        self.entries = []
+        self.options.error.call(self)
+      }
 
       var html = self.generateHTMLForEntries()
 
