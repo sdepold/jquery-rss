@@ -62,7 +62,16 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // the effect, which is used to let the entries appear
         // default: 'show'
         // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
-        effect: 'slideFastSynced'
+        effect: 'slideFastSynced',
+
+        // a callback, which gets triggered when an error occures
+        // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
+        error: function(){},
+
+        // a callback, which gets triggered when everything was loaded successfully
+        // this is an alternative to the next parameter (callback function)
+        // default: function(){}
+        success: function(){}
       },
 
       // callback function

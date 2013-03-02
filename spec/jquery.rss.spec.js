@@ -6,7 +6,7 @@ describe('jquery.rss', function() {
 
     this.element = $('<div>').appendTo($('body'))
     this.timeout = 1000
-    this.feedUrl = 'http://feeds.feedburner.com/dawanda'
+    this.feedUrl = 'http://xml-rss.de/xml/site-atom.xml'
     this.fakeGetJSON = function(content) {
       self.originalGetJSON = $.getJSON
 
@@ -22,6 +22,13 @@ describe('jquery.rss', function() {
           }
         })
       }
+    }
+  })
+
+  after(function() {
+    if (typeof this.originalGetJSON === 'function') {
+      $.getJSON = this.originalGetJSON
+      this.originalGetJSON = null
     }
   })
 
@@ -97,12 +104,32 @@ describe('jquery.rss', function() {
     this.fakeGetJSON("<p>May the fourth be with you!</p>")
 
     $container.rss(this.feedUrl, {
-      limi: 1,
+      limit: 1,
       entryTemplate: '<li>{bodyPlain}</li>'
     }, function() {
       var renderedContent = $container.html().split('\n').map(function(s){ return s.trim() }).join('').trim()
       expect(renderedContent).toMatch(/<ul><li>May the fourth be with you!<\/li><\/ul>/)
       done()
+    })
+  })
+
+  it("calls the error callback if something went wrong", function(done) {
+    this.element.rss('https://google.com', {
+      error: function() {
+        expect(1).toEqual(1)
+        done()
+      }
+    })
+  })
+
+  it("calls the success callback", function(done) {
+    this.element.rss(this.feedUrl, {
+      limit: 1,
+      layoutTemplate: 'fnord',
+      success: function() {
+        expect(1).toEqual(1)
+        done()
+      }
     })
   })
 
@@ -117,8 +144,6 @@ describe('jquery.rss', function() {
             limit: 1,
             entryTemplate: '<li>{bodyPlain}</li>'
           }, function() {
-            $.getJSON = self.originalGetJSON
-
             var renderedContent = $container.html().split('\n').map(function(s){ return s.trim() }).join('').trim()
             expect(renderedContent).toMatch(/<ul><li><\/li><\/ul>/)
 
