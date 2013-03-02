@@ -1,3 +1,7 @@
+# v1.3.0
+- [BUG] fixed forEach loop. (thanks to aegisrunestone)
+- [FEATURE] added error and success callback. (thanks to eliten00b)
+
 # v1.2.0
 - [FEATURE] added possibility to define effects for the appearance of entries
 
