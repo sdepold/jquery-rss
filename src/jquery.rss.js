@@ -54,7 +54,7 @@
       self.target.append(html.layout)
 
       if (html.entries.length !== 0) {
-        self.appendEntriesAndApplyEffects(html.layout, html.entries)
+        self.appendEntriesAndApplyEffects($("entries", html.layout), html.entries)
       }
 
       if (self.effectQueue.length > 0) {
@@ -72,13 +72,15 @@
       var $html = self.wrapContent(entry)
 
       if(self.options.effect === 'show') {
-        target.append($html)
+        target.before($html)
       } else {
         $html.css({ display: 'none' })
-        target.append($html)
+        target.before($html)
         self.applyEffect($html, self.options.effect)
       }
     })
+
+    target.remove()
   }
 
   RSS.prototype.generateHTMLForEntries = function() {
@@ -89,7 +91,7 @@
         }
 
     jQuery(this.entries).each(function() {
-      var entry     = this
+      var entry = this
 
       if(self.isRelevant(entry)) {
         var evaluatedString = self.evaluateStringForEntry(self.options.entryTemplate, entry)
@@ -99,10 +101,10 @@
 
     if(!!this.options.entryTemplate) {
       // we have an entryTemplate
-      result.layout = this.wrapContent(this.options.layoutTemplate.replace("{entries}", ''))
+      result.layout = this.wrapContent(this.options.layoutTemplate.replace("{entries}", "<entries></entries>"))
     } else {
       // no entryTemplate available
-      result.layout = this.wrapContent(result.entries.join("\n"))
+      result.layout = this.wrapContent("<div><entries></entries></div>")
     }
 
     return result
