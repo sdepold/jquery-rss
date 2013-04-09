@@ -133,6 +133,20 @@ describe('jquery.rss', function() {
     })
   })
 
+  it("renders the defined entry template in the layout template", function(done) {
+    var $container = this.element
+
+    $container.rss(this.feedUrl, {
+      limit: 1,
+      entryTemplate: '<li>bazinga</li>',
+      layoutTemplate: '<ul><li>topic</li>{entries}</ul>'
+    }, function() {
+      var renderedContent = $container.html().replace(/\n/g, '')
+      expect(renderedContent).toEqual("<ul><li>topic</li><li>bazinga</li></ul>")
+      done()
+    })
+  })
+
   describe('tokens', function() {
     describe('> bodyPlain', function() {
       describe('> XSS >', function() {
