@@ -17,7 +17,7 @@
       outputMode: 'json',
       effect: 'show',
       error: function() {
-        throw new Error("jQuery RSS: url don't link to RSS-Feed")
+        console.log("jQuery RSS: url doesn't link to RSS-Feed");
       },
       success: function(){}
     }, options || {})
@@ -233,5 +233,7 @@
 
   $.fn.rss = function(url, options, callback) {
     new RSS(this, url, options, callback).render()
+    return this; //implement chaining
   }
+  
 })(jQuery)
