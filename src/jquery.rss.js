@@ -7,7 +7,7 @@
     this.html         = []
     this.effectQueue  = []
 
-    this.options = jQuery.extend({
+    this.options = $.extend({
       ssl: false,
       limit: null,
       key: null,
@@ -17,7 +17,7 @@
       outputMode: 'json',
       effect: 'show',
       error: function() {
-        throw new Error("jQuery RSS: url don't link to RSS-Feed")
+        console.log("jQuery RSS: url doesn't link to RSS-Feed");
       },
       success: function(){}
     }, options || {})
@@ -90,7 +90,7 @@
           layout:  null
         }
 
-    jQuery(this.entries).each(function() {
+    $(this.entries).each(function() {
       var entry = this
 
       if(self.isRelevant(entry)) {
@@ -161,7 +161,7 @@
     var result = string
       , self   = this
 
-    jQuery(string.match(/(\{.*?\})/g)).each(function() {
+    $(string.match(/(\{.*?\})/g)).each(function() {
       var token = this.toString()
       result = result.replace(token, self.getValueForToken(token, entry))
     })
@@ -184,7 +184,7 @@
   }
 
   RSS.prototype.getTokenMap = function(entry) {
-    return jQuery.extend({
+    return $.extend({
       url:            entry.link,
       author:         entry.author,
       date:           entry.publishedDate,
@@ -205,7 +205,7 @@
       })(entry),
 
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
-      index:          jQuery.inArray(entry, this.entries),
+      index:          $.inArray(entry, this.entries),
       totalEntries:   this.entries.length,
 
       teaserImage:    (function(entry){
@@ -233,5 +233,7 @@
 
   $.fn.rss = function(url, options, callback) {
     new RSS(this, url, options, callback).render()
+    return this; //implement chaining
   }
+  
 })(jQuery)
