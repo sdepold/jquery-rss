@@ -1,4 +1,4 @@
-## jquery.rss
+# jquery.rss
 
 This plugin can be used to read a RSS feed (via the Google Feed API) and transform it into a custom piece of HTML.
 
@@ -164,5 +164,7 @@ The test suite is using BusterJS. To execute the tests you need to run a buster 
 - DaWanda GmbH ([Website](http://dawanda.com))
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
 - Steffen Schröder  ([Twitter](http://twitter.com/ChaosSteffen) | [Github](http://github.com/ChaosSteffen) | [Website](http://schroeder-blog.de))
+
+## Misc
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sdepold/jquery-rss/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
