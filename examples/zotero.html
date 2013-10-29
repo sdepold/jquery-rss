@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery.rss zotero example</title>
+
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="../src/jquery.rss.js"></script>
+
+    <script>
+      var readTokenFromResponse = function(response, attr) {
+        return $(response).find('tr th:contains(' + attr + ')').parent().find('td').text()
+      }
+      jQuery(function($) {
+        $("#rss-feeds").rss("https://api.zotero.org/groups/9097/items/top?start=0&limit=55", {
+          entryTemplate: "<ul><li>Title: {title}</li><li>Publisher: {publisher}</li><li>Author: {author}</li><li>Pages: {pages}</li><li>Place: {place}</li><li>Year: {year}</li></ul><br>",
+          tokens: {
+            publisher: function(entry, tokens) {
+              return readTokenFromResponse(entry.content, 'Publisher')
+            },
+            author: function(entry, tokens) {
+              return readTokenFromResponse(entry.content, 'Author')
+            },
+            pages: function(entry, tokens) {
+              return readTokenFromResponse(entry.content, 'Pages')
+            },
+            place: function(entry, tokens) {
+              return readTokenFromResponse(entry.content, 'Place')
+            },
+            year: function(entry, tokens) {
+              return readTokenFromResponse(entry.content, 'Year')
+            }
+          }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>jquery.rss zotero example</h1>
+      <div id="rss-feeds"></div>
+    </div>
+  </body>
+</html>
