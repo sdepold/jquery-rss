@@ -43,9 +43,11 @@
 
     this.load(function(data) {
       try {
+        self.feed    = data.responseData.feed
         self.entries = data.responseData.feed.entries
       } catch(e) {
         self.entries = []
+        self.feed    = null
         return self.options.error.call(self)
       }
 
@@ -184,15 +186,22 @@
   }
 
   RSS.prototype.getTokenMap = function(entry) {
-    return $.extend({
-      url:            entry.link,
-      author:         entry.author,
-      date:           entry.publishedDate,
-      title:          entry.title,
-      body:           entry.content,
-      shortBody:      entry.contentSnippet,
+    if (!this.feedTokens) {
+      var feed = JSON.parse(JSON.stringify(this.feed))
+      delete feed.entries
+      this.feedTokens = feed
+    }
 
-      bodyPlain:      (function(entry) {
+    return $.extend({
+      feed:      this.feedTokens,
+      url:       entry.link,
+      author:    entry.author,
+      date:      entry.publishedDate,
+      title:     entry.title,
+      body:      entry.content,
+      shortBody: entry.contentSnippet,
+
+      bodyPlain: (function(entry) {
         var result = entry.content
           .replace(/<script[\\r\\\s\S]*<\/script>/mgi, '')
           .replace(/<\/?[^>]+>/gi, '')
@@ -235,5 +244,5 @@
     new RSS(this, url, options, callback).render()
     return this; //implement chaining
   }
-  
+
 })(jQuery)

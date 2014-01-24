@@ -148,6 +148,28 @@ describe('jquery.rss', function() {
   })
 
   describe('tokens', function() {
+    describe('> feed', function() {
+      it('returns all feed tokens but entries', function(done) {
+        var $container = this.element
+
+        $container.rss(this.feedUrl, {
+          limit: 1,
+          entryTemplate: '<li>{something}</li>',
+          layoutTemplate: '<ul>{entries}</ul>',
+          tokens: {
+            something: function(entry, tokens) {
+              expect(tokens.feed.entries).not.toBeDefined()
+              return tokens.feed.title
+            }
+          }
+        }, function() {
+          var renderedContent = $container.html().replace(/\n/g, '')
+          expect(renderedContent).toEqual("<ul><li>XML-RSS.de Website-Feed</li></ul>")
+          done()
+        })
+      })
+    })
+
     describe('> bodyPlain', function() {
       describe('> XSS >', function() {
         after(function(done) {
