@@ -112,6 +112,7 @@ There are some predefined tokens:
 - teaserImageUrl: the url of the first image in the post's body
 - index: the index of the current entry
 - totalEntries: the total count of the entries
+- feed: contains high level information of the feed (e.g. title of the website)
 
 You can also define custom tokens using the ```tokens``` option:
 
