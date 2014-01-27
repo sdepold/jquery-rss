@@ -1,3 +1,6 @@
+# v1.4.0
+- [FEATURE] Pass the feeds meta data to the tokens object.
+
 # v1.3.0
 - [BUG] fixed forEach loop. (thanks to aegisrunestone)
 - [FEATURE] added error and success callback. (thanks to eliten00b)
