@@ -39,7 +39,7 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // outer template for the html transformation
         // default: "<ul>{entries}</ul>"
         // valid values: any string
-        layoutTemplate: '<div class='feed-container'>{entries}</div>',
+        layoutTemplate: "<div class='feed-container'>{entries}</div>",
 
         // inner template for each entry
         // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
@@ -64,7 +64,7 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
         effect: 'slideFastSynced',
 
-        // a callback, which gets triggered when an error occures
+        // a callback, which gets triggered when an error occurs
         // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
         error: function(){},
 
