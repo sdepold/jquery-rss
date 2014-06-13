@@ -19,7 +19,8 @@
       error: function() {
         console.log("jQuery RSS: url doesn't link to RSS-Feed");
       },
-      success: function(){}
+      success: function(){},
+      replaceTargetContent: false
     }, options || {})
 
     this.callback = callback || this.options.success
@@ -53,10 +54,13 @@
 
       var html = self.generateHTMLForEntries()
 
+      if (self.options.replaceTargetContent) {
+        self.target.empty();
+      }
       self.target.append(html.layout)
 
       if (html.entries.length !== 0) {
-        self.appendEntriesAndApplyEffects($("entries", html.layout), html.entries)
+        self.appendEntriesAndApplyEffects(html.layout, html.entries)
       }
 
       if (self.effectQueue.length > 0) {
@@ -103,10 +107,10 @@
 
     if(!!this.options.entryTemplate) {
       // we have an entryTemplate
-      result.layout = this.wrapContent(this.options.layoutTemplate.replace("{entries}", "<entries></entries>"))
+      result.layout = this.wrapContent(this.options.layoutTemplate.replace("{entries}", ""))
     } else {
       // no entryTemplate available
-      result.layout = this.wrapContent("<div><entries></entries></div>")
+      result.layout = this.wrapContent("<div></div>")
     }
 
     return result
