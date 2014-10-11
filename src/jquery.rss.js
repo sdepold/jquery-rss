@@ -95,7 +95,7 @@
     $(this.entries).each(function() {
       var entry = this
 
-      if(self.isRelevant(entry)) {
+      if(self.isRelevant(entry, result.entries)) {
         var evaluatedString = self.evaluateStringForEntry(self.options.entryTemplate, entry)
         result.entries.push(evaluatedString)
       }
@@ -171,11 +171,11 @@
     return result
   }
 
-  RSS.prototype.isRelevant = function(entry) {
+  RSS.prototype.isRelevant = function(entry, entries) {
     var tokenMap = this.getTokenMap(entry)
 
     if(this.options.filter) {
-      if(this.options.filterLimit && (this.options.filterLimit == this.html.length)) {
+      if(this.options.filterLimit && (this.options.filterLimit == entries.length)) {
         return false
       } else {
         return this.options.filter(entry, tokenMap)
