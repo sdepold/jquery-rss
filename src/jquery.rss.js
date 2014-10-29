@@ -16,6 +16,8 @@
       tokens: {},
       outputMode: 'json',
       effect: 'show',
+      offsetStart: false,
+      offsetEnd: false,
       error: function() {
         console.log("jQuery RSS: url doesn't link to RSS-Feed");
       },
@@ -32,6 +34,8 @@
       , apiHost     = apiProtocol + "://ajax.googleapis.com/ajax/services/feed/load"
       , apiUrl      = apiHost + "?v=1.0&output=" + this.options.outputMode + "&callback=?&q=" + encodeURIComponent(this.url)
 
+    // set limit to offsetEnd if offset has been set
+    if(this.options.offsetStart && this.options.offsetEnd) this.options.limit = this.options.offsetEnd;
     if (this.options.limit != null) apiUrl += "&num=" + this.options.limit;
     if (this.options.key != null)   apiUrl += "&key=" + this.options.key;
 
@@ -93,11 +97,23 @@
         }
 
     $(this.entries).each(function() {
-      var entry = this
-
-      if(self.isRelevant(entry, result.entries)) {
-        var evaluatedString = self.evaluateStringForEntry(self.options.entryTemplate, entry)
-        result.entries.push(evaluatedString)
+      var entry = this,
+          offsetStart = self.options.offsetStart,
+          offsetEnd = self.options.offsetEnd;
+      // offset required
+      if(offsetStart && offsetEnd) {
+        if(index >= offsetStart && index <= offsetEnd) {
+            if(self.isRelevant(entry, result.entries)) {
+                var evaluatedString = self.evaluateStringForEntry(self.options.entryTemplate, entry)
+                result.entries.push(evaluatedString)
+            }           
+        }
+      }else{
+      // no offset
+        if(self.isRelevant(entry, result.entries)) {
+            var evaluatedString = self.evaluateStringForEntry(self.options.entryTemplate, entry)
+            result.entries.push(evaluatedString)
+        }
       }
     })
 

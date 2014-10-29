@@ -31,6 +31,12 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // valid values: any integer
         limit: 10,
 
+        // want to offset results being displayed?
+        // default: false
+        // valid values: any integer
+        offsetStart: false, // offset start point
+        offsetEnd: false, // offset end point
+
         // will request the API via https
         // default: false
         // valid values: false, true
