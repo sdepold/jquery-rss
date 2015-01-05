@@ -65,6 +65,11 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // valid values: 'json', 'json_xml'
         outputMode: 'json_xml',
 
+        // formats the date with moment.js
+        // default: 'dddd MMM Do'
+        // valid values: see http://momentjs.com/docs/#/displaying/
+        dateFormat: 'MMMM Do, YYYY',
+
         // the effect, which is used to let the entries appear
         // default: 'show'
         // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
@@ -171,6 +176,7 @@ The test suite is using BusterJS. To execute the tests you need to run a buster 
 - DaWanda GmbH ([Website](http://dawanda.com))
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
 - Steffen Schröder  ([Twitter](http://twitter.com/ChaosSteffen) | [Github](http://github.com/ChaosSteffen) | [Website](http://schroeder-blog.de))
+- Ross Dallaire  ([Twitter](http://twitter.com/rdallaire) | [Github](http://github.com/rdallaire) | [Website](http://rdallaire.com)
 
 ## Misc
 
