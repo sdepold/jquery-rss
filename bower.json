@@ -21,6 +21,7 @@
     "lib"
   ],
   "dependencies": {
-    "jquery": ">=1.6.4"
+    "jquery": ">=1.6.4",
+    "moment": "~2.8.4"
   }
 }
