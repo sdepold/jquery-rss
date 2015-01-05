@@ -15,6 +15,7 @@
       entryTemplate: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>',
       tokens: {},
       outputMode: 'json',
+      dateFormat: 'dddd MMM Do',
       effect: 'show',
       offsetStart: false,
       offsetEnd: false,
@@ -106,7 +107,7 @@
             if(self.isRelevant(entry, result.entries)) {
                 var evaluatedString = self.evaluateStringForEntry(self.options.entryTemplate, entry)
                 result.entries.push(evaluatedString)
-            }           
+            }
         }
       }else{
       // no offset
@@ -212,7 +213,7 @@
       feed:      this.feedTokens,
       url:       entry.link,
       author:    entry.author,
-      date:      entry.publishedDate,
+      date:      moment(entry.publishedDate).format(this.options.dateFormat),
       title:     entry.title,
       body:      entry.content,
       shortBody: entry.contentSnippet,
