@@ -180,7 +180,6 @@ The test suite is using BusterJS. To execute the tests you need to run a buster 
 - DaWanda GmbH ([Website](http://dawanda.com))
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
 - Steffen Schröder  ([Twitter](http://twitter.com/ChaosSteffen) | [Github](http://github.com/ChaosSteffen) | [Website](http://schroeder-blog.de))
-- Ross Dallaire  ([Twitter](http://twitter.com/rdallaire) | [Github](http://github.com/rdallaire) | [Website](http://rdallaire.com)
 
 ## Misc
 
