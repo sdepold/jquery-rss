@@ -1,4 +1,4 @@
-(function($) {
+;(function($) {
   "use strict";
 
   var RSS = function(target, url, options, callback) {
@@ -260,6 +260,6 @@
   $.fn.rss = function(url, options, callback) {
     new RSS(this, url, options, callback).render()
     return this; //implement chaining
-  }
+  };
 
-})(jQuery)
+})(jQuery);
