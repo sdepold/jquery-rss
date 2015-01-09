@@ -30,5 +30,8 @@
   "dependencies": {},
   "devDependencies": {
     "buster": "~0.6.0"
+  },
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
   }
 }
