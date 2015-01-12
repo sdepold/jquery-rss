@@ -1,3 +1,6 @@
+# v1.5.0
+- [FEATURE] Add `onData` callback which gets triggered after receiving the data but before the rendering.
+
 # v1.4.0
 - [FEATURE] Pass the feeds meta data to the tokens object.
 

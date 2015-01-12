@@ -77,7 +77,11 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // a callback, which gets triggered when everything was loaded successfully
         // this is an alternative to the next parameter (callback function)
         // default: function(){}
-        success: function(){}
+        success: function(){},
+
+        // a callback, which gets triggered once data was received but before the rendering.
+        // this can be useful when you need to remove a spinner or something similar
+        onData: function(){}
       },
 
       // callback function
