@@ -21,6 +21,7 @@
       error: function() {
         console.log("jQuery RSS: url doesn't link to RSS-Feed");
       },
+      onData: function(){},
       success: function(){}
     }, options || {})
 
@@ -60,7 +61,8 @@
       self.target.append(html.layout)
 
       if (html.entries.length !== 0) {
-        self.appendEntriesAndApplyEffects($("entries", html.layout), html.entries)
+        $.isFunction(self.options.onData) && self.options.onData.call(self);
+        self.appendEntriesAndApplyEffects($("entries", html.layout), html.entries);
       }
 
       if (self.effectQueue.length > 0) {
