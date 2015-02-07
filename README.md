@@ -65,6 +65,11 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         // valid values: 'json', 'json_xml'
         outputMode: 'json_xml',
 
+        // formats the date with moment.js
+        // default: 'dddd MMM Do'
+        // valid values: see http://momentjs.com/docs/#/displaying/
+        dateFormat: 'MMMM Do, YYYY',
+
         // the effect, which is used to let the entries appear
         // default: 'show'
         // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
