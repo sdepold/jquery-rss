@@ -9,6 +9,7 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
       <head>
         <title>jquery.rss example</title>
         <script src="lib/jquery-1.6.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
         <script src="src/jquery.rss.js"></script>
         <script>
           jQuery(function($) {
