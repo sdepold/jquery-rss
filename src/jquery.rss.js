@@ -215,7 +215,7 @@
       feed:      this.feedTokens,
       url:       entry.link,
       author:    entry.author,
-      date:      moment(entry.publishedDate).format(this.options.dateFormat),
+      date:      moment(new Date (entry.publishedDate)).format(this.options.dateFormat),
       title:     entry.title,
       body:      entry.content,
       shortBody: entry.contentSnippet,
