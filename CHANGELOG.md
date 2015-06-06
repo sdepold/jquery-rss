@@ -1,3 +1,6 @@
+# v1.5.1
+- [BUG] Fix moment.js deprecation warning 
+
 # v1.5.0
 - [FEATURE] Add `onData` callback which gets triggered after receiving the data but before the rendering.
 
