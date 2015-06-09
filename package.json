@@ -26,6 +26,7 @@
   ],
   "main": "src/jquery.rss.js",
   "scripts": {
+    "test": "java -jar dist/compiler.jar src/jquery.rss.js --js_output_file=dist/jquery.rss.min.js && gulp",
     "postinstall": "node_modules/.bin/bower install"
   },
   "engines": {
@@ -33,6 +34,14 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "buster": "~0.6.0"
+    "bower": "^1.4.1",
+    "buster": "~0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-busterjs": "^1.3.2",
+    "gulp-jscs": "^1.6.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-markdown-code-blocks": "^1.1.0",
+    "moment": "^2.10.3",
+    "run-sequence": "^1.1.0"
   }
 }
