@@ -46,6 +46,7 @@ gulp.task('test-integration', function () {
       name: 'integration',
       environment: 'browser',
       libs: ['lib/*.js', 'node_modules/moment/min/moment.min.js'],
-      sources: ['dist/jquery.rss.min.js']
+      sources: ['dist/jquery.rss.min.js'],
+      useHeadlessBrowser: true
     }));
 });
