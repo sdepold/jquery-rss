@@ -1,0 +1,66 @@
+ <script src="lib/jquery-1.6.4.min.js"></script>
+<script src="src/jquery.rss.js"></script>
+
+
+
+<script type="text/javascript">
+   
+
+$(document).ready(function(){
+
+          var t = '<div style="position: relative; overflow: hidden;" class="blog-posts hfeed isotope" id="itemContainer">{entries}<div>';
+      var tt = '<div style=" left: 0px; top: 0px; transform: translate(0px, 0px);" class="post hentry isotope-item" ><div class="post-body entry-content" id="post-body-7712492544463529639"><div class="body-post"><span id="p7712492544463529639"><div class="entry-image"><a href="{url}" title="{title}"><img class="thumb" src="{teaserImageUrl}"></a></div><div class="entry-container"><h2 class="post-title"><a href="{url}">{title}</a></h2><div class="author"><img src="http://lh3.googleusercontent.com/-Xbwi-KZTcQw/AAAAAAAAAAI/AAAAAAAAGu4/IpK_Uoma3TU/s512-c/photo.jpg" style="width:45px;border-radius:50%;"></div><p>{shortBody}</p></div></span></div><div style="clear: both;"></div></div><div class="post-footer"><div class="ft-tish clearfix"><div class="ft-ftime"><span class="post-timestamp"><i class="fontawesome-time"></i><a href="{url}">2/18/2014</a></span></div><div class="ft-fshare"><ul class="share-buttons"><li><a href="https://www.facebook.com/sharer/sharer.php?u={url}&t=" target="_blank"><img src="images/flat_web_icon_set/color/Facebook.png"></a></li><li><a href="https://twitter.com/intent/tweet?source={url}&text=:%20{url}" target="_blank" title="Tweet"><img src="images/flat_web_icon_set/color/Twitter.png"></a></li><li><a href="https://plus.google.com/share?url={url}" target="_blank" title="Share on Google+"><img src="images/flat_web_icon_set/color/Google+.png"></a></li><li><a href="http://pinterest.com/pin/create/button/?url={url}&description=" target="_blank" title="Pin it"><img src="images/flat_web_icon_set/color/Pinterest.png"></a></li></ul><ul><li><i class="fontawesome-comment"></i><a id="co" href="{url}#comment-form" onClick="">{totalEntries}</a></li></ul></div></div><div class="post-footer-line post-footer-line-1"></div><div class="post-footer-line post-footer-line-2"></div><div class="post-footer-line post-footer-line-3"></div></div></div>';
+  	var url='http://feeds.feedburner.com/How2woogirls';
+  $(" dd > a").click(function(){
+   var m =  $(this).text();  
+      
+
+       $("#Blog1").text("");
+$("#Blog1").rss(url, {
+    limit: 300,
+    layoutTemplate: t,
+    entryTemplate: tt,
+    filterLimit: 300,
+    filter: function (entry, tokens) {
+        return tokens.bodyPlain.indexOf(m) > -1
+    }
+}).show();
+
+
+
+  });
+  
+  
+ 
+	  
+	  
+	 
+	  
+	  
+	  
+var y = 0;
+  $("#Blog1").rss(url, {
+    limit: 200,
+    layoutTemplate: t,
+    entryTemplate: tt,
+	effect: 'slide',
+  success: function(){
+  document.querySelector('style').textContent += ".blog-posts { height:"+$("#co").text()*119.84 +"px; }";
+  
+   }
+}).show();
+
+
+
+ 
+
+
+});
+
+
+
+   </script>
+   
+   
+<div class="widget Blog" id="Blog1"></div>
+<dd><a>girls</a></dd><dd><a>love</a></dd>
