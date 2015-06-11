@@ -184,7 +184,8 @@ This will request 100 entries via the Feed API and renders the first 10 matching
 
 ## Testing
 
-The test suite is using BusterJS. To execute the tests you need to run a buster server, capture a browser and finally do `npm test`. The server can be started via `node_modules/.bin/buster server`. Afterwards open `http://localhost:1111/capture`.
+The test suite is using BusterJS. In order to successfully run the tests you will need [phantomjs](http://phantomjs.org/).
+If that is installed you only have to run `npm test`.
 
 ## Authors/Contributors
 
