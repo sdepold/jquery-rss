@@ -24,6 +24,8 @@
         console.log('jQuery RSS: url doesn\'t link to RSS-Feed');
       },
       onData: function () {},
+      onEntryBeforeEffects: function () {},
+      onEntryAfterEffects: function () {},
       success: function () {}
     }, options || {});
 
@@ -106,10 +108,29 @@
 
       if (self.options.effect === 'show') {
         target.before($html);
+
+        // Trigger for each entry after effects are applied
+        if ($.isFunction(self.options.onEntryAfterEffects)) {
+          self.options.onEntryAfterEffects.call(self);
+        }
+
       } else {
         $html.css({ display: 'none' });
         target.before($html);
-        self.applyEffect($html, self.options.effect);
+
+        // Trigger for each entry after effects are applied
+        if ($.isFunction(self.options.onEntryBeforeEffects)) {
+          self.options.onEntryBeforeEffects.call(self);
+        }
+
+        self.applyEffect($html, self.options.effect, function() {
+
+          // Trigger for each entry after effects are applied
+          if ($.isFunction(self.options.onEntryAfterEffects)) {
+            self.options.onEntryAfterEffects.call(self);
+          }
+
+        });
       }
     });
 
@@ -183,10 +204,14 @@
         $element.slideDown(callback);
         break;
       case 'slideSynced':
-        self.effectQueue.push({ element: $element, effect: 'slide' });
+        self.effectQueue.push({ element: $element, effect: 'slide', callback: callback });
         break;
       case 'slideFastSynced':
-        self.effectQueue.push({ element: $element, effect: 'slideFast' });
+        self.effectQueue.push({ element: $element, effect: 'slideFast', callback: callback });
+        break;
+      default:
+        callback();
+
         break;
     }
   };
@@ -201,6 +226,10 @@
 
       if (item) {
         self.applyEffect(item.element, item.effect, executeEffectQueueItem);
+
+        if(item.callback) {
+          item.callback();
+        }//if
       } else if (callback) {
         callback();
       }
