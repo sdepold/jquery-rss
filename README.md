@@ -87,7 +87,13 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
 
         // a callback, which gets triggered once data was received but before the rendering.
         // this can be useful when you need to remove a spinner or something similar
-        onData: function(){}
+        onData: function(){},
+
+        // a callback, which gets triggered once an entry is about to be rendered.
+    		onEntryBeforeEffects: function(){}
+        
+        // a callback, which gets triggered once an entry is rendered.
+  			onEntryAfterEffects: function(){}
       },
 
       // callback function
