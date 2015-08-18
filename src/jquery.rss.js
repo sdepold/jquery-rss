@@ -244,11 +244,24 @@
       this.feedTokens = feed;
     }
 
+    // If moment.js is available, use it to format the date.
+    if (typeof moment !== 'undefined') {
+      this.formattedDate = moment(new Date(entry.publishedDate)).format(this.options.dateFormat);
+    } else {
+      // Otherwise, if a custom formatting function is provided, use that.
+      if (this.options.dateFormatFunction) {
+        this.formattedDate = this.options.dateFormatFunction(entry.publishedDate);
+      } else {
+        // If all else fails, just use the date as-is.
+        this.formattedDate = entry.publishedDate;
+      }
+    }
+
     return $.extend({
       feed:      this.feedTokens,
       url:       entry.link,
       author:    entry.author,
-      date:      moment(new Date(entry.publishedDate)).format(this.options.dateFormat),
+      date:      this.formattedDate,
       title:     entry.title,
       body:      entry.content,
       shortBody: entry.contentSnippet,
