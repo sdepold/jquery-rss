@@ -1,5 +1,10 @@
+# v2.0.0
+## Changed
+- moment.js is now optional
+- Please note that the format of dates might change when moment.js is available and no `dateFormat` option is specified. In that scenario all dates will be transformed to the format `dddd MMM Do`.
+
 # v1.5.1
-- [BUG] Fix moment.js deprecation warning 
+- [BUG] Fix moment.js deprecation warning
 
 # v1.5.0
 - [FEATURE] Add `onData` callback which gets triggered after receiving the data but before the rendering.
