@@ -130,7 +130,7 @@ describe('jquery.rss', function () {
     });
   });
 
-  it('//calls the error callback if something went wrong', function (done) {
+  it('calls the error callback if something went wrong', function (done) {
     this.element.rss('https://google.com', {
       error: function () {
         expect(1).toEqual(1);
