@@ -10,6 +10,7 @@
 
     this.options = $.extend({
       ssl: false,
+      host: 'feedrapp.info',
       limit: null,
       key: null,
       layoutTemplate: '<ul>{entries}</ul>',
@@ -45,9 +46,8 @@
 
   RSS.prototype.load = function (callback) {
     var apiProtocol = 'http' + (this.options.ssl ? 's' : '');
-    var apiHost     = apiProtocol + '://ajax.googleapis.com/ajax/services/feed/load';
-    var apiUrl      = apiHost + '?v=1.0&output=' + this.options.outputMode +
-      '&callback=?&q=' + encodeURIComponent(this.url);
+    var apiHost     = apiProtocol + '://' + this.options.host;
+    var apiUrl      = apiHost + '?callback=?&q=' + encodeURIComponent(this.url);
 
     // set limit to offsetEnd if offset has been set
     if (this.options.offsetStart && this.options.offsetEnd) {
@@ -310,7 +310,7 @@
     if (typeof result !== 'undefined') {
       return ((typeof result === 'function') ? result(entry, tokenMap) : result);
     } else {
-      throw new Error('Unknown token: ' + _token);
+      throw new Error('Unknown token: ' + _token + ', url:' + this.url);
     }
   };
 

@@ -21,7 +21,7 @@ This plugin can be used to read a RSS feed (via the Google Feed API) and transfo
         <div id="rss-feeds"></div>
       </body>
     </html>
-    
+
 Note: Moment.js is _optional_. If you include it, jquery.rss will use it to format dates.
 If you do not want to include Moment.js, you may opt for providing your own date formatting function, or for not formatting dates at all.
 
@@ -45,6 +45,12 @@ If you do not want to include Moment.js, you may opt for providing your own date
         // default: false
         // valid values: false, true
         ssl: true,
+
+        // which server should be requested for feed parsing
+        // the server implementation is here: https://github.com/sdepold/feedr
+        // default: feedrapp.info
+        // valid values: any string
+        host: 'my-own-feedr-instance.com',
 
         // outer template for the html transformation
         // default: "<ul>{entries}</ul>"
@@ -73,7 +79,7 @@ If you do not want to include Moment.js, you may opt for providing your own date
         // default: 'dddd MMM Do'
         // valid values: see http://momentjs.com/docs/#/displaying/
         dateFormat: 'MMMM Do, YYYY',
-        
+
         // formats the date in whatever manner you choose. (optional)
         // this function should return your formatted date.
         // this is useful if you want to format dates without moment.js.
