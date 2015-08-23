@@ -11,7 +11,7 @@ describe('jquery.rss', function () {
     var self = this;
 
     this.element = $('<div>').appendTo($('body'));
-    this.timeout = 1000;
+    this.timeout = 10000;
     this.feedUrl = 'http://xml-rss.de/xml/site-atom.xml';
     this.fakeGetJSON = function (content) {
       self.originalGetJSON = $.getJSON;
