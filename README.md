@@ -70,11 +70,6 @@ If you do not want to include Moment.js, you may opt for providing your own date
           bar: function(entry, tokens) { return entry.title }
         },
 
-        // output mode of google feed loader request
-        // default: 'json'
-        // valid values: 'json', 'json_xml'
-        outputMode: 'json_xml',
-
         // formats the date with moment.js (optional)
         // default: 'dddd MMM Do'
         // valid values: see http://momentjs.com/docs/#/displaying/
@@ -110,6 +105,12 @@ If you do not want to include Moment.js, you may opt for providing your own date
       // called after feeds are successfully loaded and after animations are done
       function callback() {}
     )
+
+### Note about the host option
+
+Since version 3.0.0 the plugin is no longer using the Google Feed API but a drop-in replacement called [feedr](https://github.com/sdepold/feedr). That server is currently running on Heroku and might have some downtimes, interrupts or unexpected issues. While I will try to keep those problems as rare as possible, it can totally happen from time to time. I might move the service to some other provide or even improve the infrastructure.
+
+If you don't want to rely on the [provided server](http://feedrapp.info) and instead run your own version, you can just download feedr, install the dependencies and run it. As written above, you can specify the host which is used to parse the feeds with the `host` option.
 
 ## Templating
 
