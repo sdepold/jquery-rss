@@ -1,3 +1,7 @@
+# v3.0.1
+## Changed
+- Use www.feedrapp.info instead of feedrapp.info
+
 # v3.0.0
 ## Changed
 - Replace Google Feed API with [feedr](https://github.com/sdepold/feedr)

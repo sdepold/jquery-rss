@@ -2,7 +2,7 @@
   "author": "Sascha Depold <sascha@depold.com> (http://depold.com)",
   "name": "jquery-rss",
   "description": "An easy-to-use rss plugin for jquery with templating.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "homepage": "https://github.com/sdepold/jquery-rss",
   "keywords": [
     "rss",
