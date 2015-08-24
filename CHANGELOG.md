@@ -1,3 +1,7 @@
+# v3.0.0
+## Changed
+- Replace Google Feed API with [feedr](https://github.com/sdepold/feedr)
+
 # v2.0.0
 ## Changed
 - moment.js is now optional
