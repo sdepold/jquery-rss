@@ -1,3 +1,7 @@
+# v3.1.0
+## Changed
+- Re-added support for SSL
+
 # v3.0.1
 ## Changed
 - Use www.feedrapp.info instead of feedrapp.info
