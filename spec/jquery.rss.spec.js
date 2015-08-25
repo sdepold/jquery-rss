@@ -165,6 +165,35 @@ describe('jquery.rss', function () {
     });
   });
 
+  describe('ssl', function () {
+    it('rewrites the host to herokuapp.com if not specified differently', function (done) {
+      this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
+        expect(apiUrl).toMatch(/https:\/\/feedrapp\.herokuapp\.com/);
+        done();
+      });
+
+      this.element.rss(this.feedUrl, { ssl: true });
+    });
+
+    it('uses feedrapp.info if ssl is turned off', function (done) {
+      this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
+        expect(apiUrl).toMatch(/http:\/\/www\.feedrapp\.info/);
+        done();
+      });
+
+      this.element.rss(this.feedUrl, { ssl: false });
+    });
+
+    it('does not overwrite the host if it was specified manually', function (done) {
+      this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
+        expect(apiUrl).toMatch(/https:\/\/foo\.com/);
+        done();
+      });
+
+      this.element.rss(this.feedUrl, { ssl: true, host: 'foo.com' });
+    });
+  });
+
   describe('tokens', function () {
     describe('> feed', function () {
       it('returns all feed tokens but entries', function (done) {
