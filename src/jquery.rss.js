@@ -50,21 +50,27 @@
   ];
 
   RSS.prototype.load = function (callback) {
-    var apiProtocol = 'http' + (this.options.ssl ? 's' : '');
-    var apiHost     = apiProtocol + '://' + this.options.host;
-    var apiUrl      = apiHost + '?callback=?&q=' + encodeURIComponent(this.url);
-
-    // set limit to offsetEnd if offset has been set
-    if (this.options.offsetStart && this.options.offsetEnd) {
-      this.options.limit = this.options.offsetEnd;
+    var apiUrl = '';
+    if(typeof(this.options.buildUrl) == 'function' ) {
+      apiUrl = this.options.buildUrl(this);
     }
+    else {
+      var apiProtocol = 'http' + (this.options.ssl ? 's' : '');
+      var apiHost     = apiProtocol + '://' + this.options.host;
+      var apiUrl      = apiHost + '?callback=?&q=' + encodeURIComponent(this.url);
 
-    if (this.options.limit !== null) {
-      apiUrl += '&num=' + this.options.limit;
-    }
+      // set limit to offsetEnd if offset has been set
+      if (this.options.offsetStart && this.options.offsetEnd) {
+        this.options.limit = this.options.offsetEnd;
+      }
 
-    if (this.options.key !== null) {
-      apiUrl += '&key=' + this.options.key;
+      if (this.options.limit !== null) {
+        apiUrl += '&num=' + this.options.limit;
+      }
+
+      if (this.options.key !== null) {
+        apiUrl += '&key=' + this.options.key;
+      }
     }
 
     $.getJSON(apiUrl, callback);
@@ -74,6 +80,11 @@
     var self = this;
 
     this.load(function (data) {
+      if(typeof(self.options.transform) == 'function')
+        data = self.options.transform(data);
+
+      window.lastX = data;
+
       try {
         self.feed    = data.responseData.feed;
         self.entries = data.responseData.feed.entries;
