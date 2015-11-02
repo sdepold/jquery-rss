@@ -26,6 +26,8 @@ Chances are that you are experiencing a downtime on feedrapp.info. Please update
       </body>
     </html>
 
+Demo link for above code: http://embed.plnkr.co/WQRoCYLld162uplnz1rc/preview
+
 Note: Moment.js is _optional_. If you include it, jquery.rss will use it to format dates.
 If you do not want to include Moment.js, you may opt for providing your own date formatting function, or for not formatting dates at all.
 
