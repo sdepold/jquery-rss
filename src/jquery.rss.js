@@ -249,8 +249,9 @@
       this.feedTokens = feed;
     }
 
-    // If moment.js is available, use it to format the date.
-    if (typeof moment !== 'undefined') {
+    // If moment.js is available and dateFormatFunction is not overriding it,
+    // use it to format the date.
+    if (typeof moment !== 'undefined' && !this.options.dateFormatFunction) {
       this.formattedDate = moment(new Date(entry.publishedDate)).format(this.options.dateFormat);
     } else {
       // Otherwise, if a custom formatting function is provided, use that.
