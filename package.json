@@ -44,5 +44,6 @@
     "moment": "^2.10.3",
     "phantomjs": "^1.9.19",
     "run-sequence": "^1.1.0"
-  }
+  },
+  "license": "MIT"
 }
