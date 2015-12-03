@@ -249,17 +249,16 @@
       this.feedTokens = feed;
     }
 
-    // If moment.js is available, use it to format the date.
-    if (typeof moment !== 'undefined') {
+    // If a custom formatting function is provided, use that.
+    if (this.options.dateFormatFunction) {
+      this.formattedDate = this.options.dateFormatFunction(entry.publishedDate);
+    } else if (typeof moment !== 'undefined') {
+      // If moment.js is available and dateFormatFunction is not overriding it,
+      // use it to format the date.
       this.formattedDate = moment(new Date(entry.publishedDate)).format(this.options.dateFormat);
     } else {
-      // Otherwise, if a custom formatting function is provided, use that.
-      if (this.options.dateFormatFunction) {
-        this.formattedDate = this.options.dateFormatFunction(entry.publishedDate);
-      } else {
-        // If all else fails, just use the date as-is.
-        this.formattedDate = entry.publishedDate;
-      }
+      // If all else fails, just use the date as-is.
+      this.formattedDate = entry.publishedDate;
     }
 
     return $.extend({
