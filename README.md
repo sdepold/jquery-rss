@@ -1,6 +1,6 @@
 # jquery.rss
 
-This plugin can be used to read a RSS feed (via the Google Feed API) and transform it into a custom piece of HTML.
+This plugin can be used to read a RSS feed and transform it into a custom piece of HTML.
 
 ## Note about feedrapp.info
 
