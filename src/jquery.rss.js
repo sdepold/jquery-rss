@@ -18,6 +18,7 @@
       tokens: {},
       outputMode: 'json',
       dateFormat: 'dddd MMM Do',
+      language: 'en',
       effect: 'show',
       offsetStart: false,
       offsetEnd: false,
@@ -251,7 +252,7 @@
 
     // If moment.js is available, use it to format the date.
     if (typeof moment !== 'undefined') {
-      this.formattedDate = moment(new Date(entry.publishedDate)).format(this.options.dateFormat);
+      this.formattedDate = moment(new Date(entry.publishedDate)).locale(this.options.language).format(this.options.dateFormat);
     } else {
       // Otherwise, if a custom formatting function is provided, use that.
       if (this.options.dateFormatFunction) {
