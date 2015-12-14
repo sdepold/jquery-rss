@@ -370,5 +370,29 @@ describe('jquery.rss', function () {
         });
       });
     });
+
+    describe('> date', function () {
+      it('renders english dates by default', function (done) {
+        var $container = this.element;
+
+        $container.rss(this.feedUrl, {}, function () {
+          var renderedContent = $container.html().replace(/\n/g, '');
+
+          expect(renderedContent).toMatch(/<a href=".*">\[.*Saturday May 22nd\] RSS<\/a>/);
+          done();
+        });
+      });
+
+      it('renders german dates if enabled', function (done) {
+        var $container = this.element;
+
+        $container.rss(this.feedUrl, { dateLocale: 'de' }, function () {
+          var renderedContent = $container.html().replace(/\n/g, '');
+
+          expect(renderedContent).toMatch(/<a href=".*">\[.*Samstag Mai 22\.\] RSS<\/a>/);
+          done();
+        });
+      });
+    });
   });
 });

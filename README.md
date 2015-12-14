@@ -81,6 +81,10 @@ If you do not want to include Moment.js, you may opt for providing your own date
         // valid values: see http://momentjs.com/docs/#/displaying/
         dateFormat: 'MMMM Do, YYYY',
 
+        // localizes the date with moment.js (optional)
+        // default: 'en'
+        dateLocale: 'de',
+
         // formats the date in whatever manner you choose. (optional)
         // this function should return your formatted date.
         // this is useful if you want to format dates without moment.js.
