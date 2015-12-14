@@ -46,7 +46,7 @@ gulp.task('test-integration', function () {
     .pipe(buster({
       name: 'integration',
       environment: 'browser',
-      libs: ['lib/*.js', 'node_modules/moment/min/moment.min.js'],
+      libs: ['lib/*.js', 'node_modules/moment/min/moment-with-locales.min.js'],
       sources: ['dist/jquery.rss.min.js'],
       useHeadlessBrowser: true
     }));
