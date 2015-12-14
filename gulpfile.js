@@ -28,6 +28,7 @@ gulp.task('lint-code', function () {
       './src/**/*.js'
     ])
     .pipe(jscs())
+    .pipe(jscs.reporter('fail'))
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
     .pipe(jshint.reporter('fail'));
