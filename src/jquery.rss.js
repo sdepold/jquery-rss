@@ -169,7 +169,7 @@
   };
 
   RSS.prototype.wrapContent = function (content) {
-    if ($.trim(content).indexOf('<') !== 0) {
+    if (($.trim(content).indexOf('<') !== 0) || $(content).is('entries')) {
       // the content has no html => create a surrounding div
       return $('<div>' + content + '</div>');
     } else {
