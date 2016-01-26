@@ -42,7 +42,7 @@
     "gulp-jshint": "^2.0.0",
     "gulp-markdown-code-blocks": "^1.1.0",
     "moment": "^2.10.3",
-    "phantomjs": "^2.1.1",
+    "phantomjs": "^2.1.2",
     "run-sequence": "^1.1.0"
   },
   "license": "MIT"
