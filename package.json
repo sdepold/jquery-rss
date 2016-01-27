@@ -34,7 +34,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "bower": "^1.7.6",
+    "bower": "^1.7.7",
     "buster": "~0.7.0",
     "gulp": "^3.9.0",
     "gulp-busterjs": "^1.4.0",
