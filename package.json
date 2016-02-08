@@ -36,7 +36,7 @@
   "devDependencies": {
     "bower": "^1.7.7",
     "buster": "~0.7.0",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-busterjs": "^1.4.0",
     "gulp-jscs": "^3.0.2",
     "gulp-jshint": "^2.0.0",
