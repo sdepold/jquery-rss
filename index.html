@@ -7,10 +7,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     <script src="src/jquery.rss.js"></script>
     <script>
+
       jQuery(function($) {
-        $("#rss-feeds").rss("http://feeds.feedburner.com/dawanda", {
+        $("#rss-feeds").rss("http://blog.superfeedr.com/atom.xml", {
+          ssl: true,
+          host: 'push.superfeedr.com',
           limit: 15,
-          effect: 'slideFastSynced'
+          buildUrl: function(rss) {
+            var auth = btoa(['superfeedr', 'c77d4103dfe9fe2f32b19b9b4653c09b'].join(':'));
+            var apiProtocol = 'http' + (rss.options.ssl ? 's' : '');
+            var apiHost     = apiProtocol + '://' + rss.options.host;
+            var apiUrl      = apiHost + '?';
+            apiUrl += 'callback=?';
+            apiUrl += '&count=' + rss.options.limit || 10;
+            apiUrl += '&format=json';
+            apiUrl += '&hub.mode=retrieve';
+            apiUrl += '&hub.topic=' + encodeURIComponent(rss.url);
+            apiUrl += '&authorization=' + auth;
+
+            return apiUrl;
+          },
+          transform: function transform(data) {
+            var x = {
+              responseData: {
+                feed: {
+                  feedUrl: data.status.feed,
+                  title: data.title,
+                  link: '',
+                  description: '',
+                  author: '',
+                  entries: []
+                }
+              }
+            };
+
+            data.items.forEach(function(i) {
+              x.responseData.feed.entries.push({
+                title: i.title,
+                link: i.permalinkUrl,
+                content: i.content,
+                contentSnippet: i.summary || i.content,
+                publishedDate: new Date(1000 * i.published).toISOString(),
+                categories: i.categories || [],
+                author: i.actor.displayName
+              });
+            })
+
+            return x;
+          }
         })
       })
     </script>
