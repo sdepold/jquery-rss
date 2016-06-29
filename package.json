@@ -43,7 +43,7 @@
     "gulp-markdown-code-blocks": "^1.1.0",
     "moment": "^2.13.0",
     "phantomjs": "^2.1.7",
-    "run-sequence": "^1.2.1"
+    "run-sequence": "^1.2.2"
   },
   "license": "MIT"
 }
