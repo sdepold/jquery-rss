@@ -38,7 +38,7 @@
     "buster": "~0.7.0",
     "gulp": "^3.9.1",
     "gulp-busterjs": "^1.4.0",
-    "gulp-jscs": "^3.0.2",
+    "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.0",
     "gulp-markdown-code-blocks": "^1.1.1",
     "moment": "^2.14.1",
