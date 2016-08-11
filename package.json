@@ -40,7 +40,7 @@
     "gulp-busterjs": "^1.4.0",
     "gulp-jscs": "^3.0.2",
     "gulp-jshint": "^2.0.0",
-    "gulp-markdown-code-blocks": "^1.1.0",
+    "gulp-markdown-code-blocks": "^1.1.1",
     "moment": "^2.14.1",
     "phantomjs": "^2.1.7",
     "run-sequence": "^1.2.2"
