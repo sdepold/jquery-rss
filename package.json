@@ -30,7 +30,7 @@
     "postinstall": "node_modules/.bin/bower install"
   },
   "engines": {
-    "node": ">=v0.4.8"
+    "node": ">= 4"
   },
   "dependencies": {},
   "devDependencies": {
