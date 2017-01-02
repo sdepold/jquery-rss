@@ -13,5 +13,6 @@ notifications:
 language: node_js
 
 node_js:
-  - 0.10
   - 0.12
+  - 4
+  - 6
