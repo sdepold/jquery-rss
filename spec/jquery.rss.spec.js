@@ -184,7 +184,7 @@ describe('jquery.rss', function () {
   describe('ssl', function () {
     it('rewrites the host to herokuapp.com if not specified differently', function (done) {
       this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
-        expect(apiUrl).toMatch(/https:\/\/feedrapp\.herokuapp\.com/);
+        expect(apiUrl).toMatch(/https:\/\/www\.feedrapp\.info/);
         done();
       });
 

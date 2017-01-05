@@ -29,11 +29,6 @@
       success: function () {}
     }, options || {});
 
-    // The current SSL certificate is only valid for *.herokuapp.com
-    if (this.options.ssl && (this.options.host === 'www.feedrapp.info')) {
-      this.options.host = 'feedrapp.herokuapp.com';
-    }
-
     this.callback = callback || this.options.success;
   };
 
