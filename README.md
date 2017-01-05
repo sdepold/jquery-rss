@@ -4,7 +4,7 @@ This plugin can be used to read a RSS feed and transform it into a custom piece 
 
 ## Note about feedrapp.info
 
-Chances are that you are experiencing a downtime on feedrapp.info. Please update to the latest version which uses www.feedrapp.info and which might support SSL in the near future.
+Chances are that you are experiencing a downtime on feedrapp.info. Please update to the latest version which uses www.feedrapp.info and which supports SSL as well.
 
 ## Setup
 
