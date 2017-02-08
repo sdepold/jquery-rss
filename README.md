@@ -1,5 +1,7 @@
 # jquery.rss [![Build Status](https://travis-ci.org/sdepold/jquery-rss.svg?branch=master)](https://travis-ci.org/sdepold/jquery-rss)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/sdepold/jquery-rss.svg)](https://greenkeeper.io/)
+
 This plugin can be used to read a RSS feed and transform it into a custom piece of HTML.
 
 ## Note about feedrapp.info
