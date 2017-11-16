@@ -26,7 +26,7 @@
   ],
   "main": "src/jquery.rss.js",
   "scripts": {
-    "test": "java -jar dist/compiler.jar src/jquery.rss.js --js_output_file=dist/jquery.rss.min.js && gulp"
+    "test": "java -jar utils/compiler.jar src/jquery.rss.js --js_output_file=dist/jquery.rss.min.js && gulp"
   },
   "engines": {
     "node": ">=v0.4.8"
