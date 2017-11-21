@@ -18,6 +18,7 @@
       tokens: {},
       outputMode: 'json',
       dateFormat: 'dddd MMM Do',
+      timeFormat: 'HH:mm',
       dateLocale: 'en',
       effect: 'show',
       offsetStart: false,
@@ -261,6 +262,29 @@
     }
   };
 
+  RSS.prototype.getFormattedTime = function (dateString) {
+    // If a custom formatting function is provided, use that.
+    if (this.options.timeFormatFunction) {
+      return this.options.timeFormatFunction(dateString);
+    } else if (typeof moment !== 'undefined') {
+      // If moment.js is available and dateFormatFunction is not overriding it,
+      // use it to format the time.
+      var time = moment(new Date(dateString));
+
+      if (time.locale) {
+        time = time.locale(this.options.dateLocale);
+      } else {
+        time = time.lang(this.options.dateLocale);
+      }
+
+      return time.format(this.options.timeFormat);
+    } else {
+      // If all else fails, just use the date as-is.
+      return dateString;
+    }
+  };
+
+
   RSS.prototype.getTokenMap = function (entry) {
     if (!this.feedTokens) {
       var feed = JSON.parse(JSON.stringify(this.feed));
@@ -274,6 +298,7 @@
       url:       entry.link,
       author:    entry.author,
       date:      this.getFormattedDate(entry.publishedDate),
+      time:      this.getFormattedTime(entry.publishedDate),
       title:     entry.title,
       body:      entry.content,
       shortBody: entry.contentSnippet,
