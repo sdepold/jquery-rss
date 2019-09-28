@@ -2,6 +2,25 @@
 
 This plugin can be used to read a RSS feed and transform it into a custom piece of HTML.
 
+## Installation
+
+Through npm:
+ 
+```
+$ npm install jquery
+$ npm install jquery-rss
+
+const $ = require('jquery');
+require('jquery-rss); // This will add the plugin to the jQuery namespace
+```
+
+Through cdnjs:
+
+```
+<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/3.3.0/jquery.rss.min.js"></script>
+```
+
 ## Setup
 
     <!DOCTYPE html>
