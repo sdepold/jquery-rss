@@ -6,11 +6,12 @@
     this.url = url;
     this.html = [];
     this.effectQueue = [];
-    this.version      = '3.3.1'; // Synced version
+    this.version = '3.3.1'; // Synced version
 
     this.options = $.extend({
       ssl: false,
       host: 'www.feedrapp.info',
+      ads: true,
       limit: null,
       key: null,
       layoutTemplate: '<ul>{entries}</ul>',
@@ -48,7 +49,7 @@
   RSS.prototype.load = function (callback) {
     var apiProtocol = 'http' + (this.options.ssl ? 's' : '');
     var apiHost = apiProtocol + '://' + this.options.host;
-    var apiUrl = apiHost + '?version=' + this.version + '&callback=?&q=' + encodeURIComponent(this.url);
+    var apiUrl = apiHost + '?ads=' + this.options.ads + '&version=' + this.version + '&callback=?&q=' + encodeURIComponent(this.url);
 
     // set limit to offsetEnd if offset has been set
     if (this.options.offsetStart && this.options.offsetEnd) {

@@ -8,7 +8,7 @@ const updatedLines = lines.map((line) => {
         return line;
     }
 
-    return `    this.version      = '${version}'; // Synced version`
+    return `    this.version = '${version}'; // Synced version`
 });
 
 fs.writeFileSync(sourcePath, updatedLines.join('\n'));

@@ -202,6 +202,28 @@ describe('jquery.rss', () => {
         element.rss(feedUrl, { ssl: true });
     });
 
+    describe('ads', () => {
+        it('sends the enables ads by default', (done)=>{
+            const ajaxStub = stub($, 'getJSON').callsFake(function (apiUrl) {
+                expect(apiUrl).to.match(/ads=true/);
+                ajaxStub.restore();
+                done();
+            });
+
+            element.rss(feedUrl, { ssl: true });
+        });
+
+        it('turns of ads if configured respectively', (done)=>{
+            const ajaxStub = stub($, 'getJSON').callsFake(function (apiUrl) {
+                expect(apiUrl).to.match(/ads=false/);
+                ajaxStub.restore();
+                done();
+            });
+
+            element.rss(feedUrl, { ssl: true, ads: false });
+        })
+    });
+
     describe('ssl', function () {
         it('rewrites the host to feedrapp.info if not specified differently', function (done) {
             const ajaxStub = stub($, 'getJSON').callsFake(function (apiUrl) {

@@ -73,6 +73,12 @@ If you do not want to include Moment.js, you may opt for providing your own date
         // valid values: any string
         host: 'my-own-feedr-instance.com',
 
+        // option to seldomly render ads
+        // ads help covering the costs for the feedrapp server hosting and future improvements
+        // default: true
+        // valid values: false, true
+        ads: false,
+
         // outer template for the html transformation
         // default: "<ul>{entries}</ul>"
         // valid values: any string
