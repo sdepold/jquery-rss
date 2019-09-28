@@ -3,7 +3,6 @@
 
   var RSS = function (target, url, options, callback) {
     this.target       = target;
-
     this.url          = url;
     this.html         = [];
     this.effectQueue  = [];
