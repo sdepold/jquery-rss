@@ -5,6 +5,7 @@ const { expect } = require('chai');
 const fetch = require('node-fetch');
 const moment = global.moment = require('moment');
 const { stub } = require('sinon');
+const { version } = require('../package.json');
 
 describe('jquery.rss', () => {
     let $, element, originalGetJson;
@@ -189,6 +190,16 @@ describe('jquery.rss', () => {
 
             done();
         });
+    });
+
+    it('sends the lib version during feedrapp requests', (done) => {
+        const ajaxStub = stub($, 'getJSON').callsFake(function (apiUrl) {
+            expect(apiUrl).to.match(new RegExp(`version=${version}`));
+            ajaxStub.restore();
+            done();
+        });
+
+        element.rss(feedUrl, { ssl: true });
     });
 
     describe('ssl', function () {
