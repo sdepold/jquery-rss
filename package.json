@@ -28,7 +28,9 @@
   "scripts": {
     "test": "npm run compile && mocha test/jquery.rss.test.js -t 10000",
     "compile": "java -jar utils/compiler.jar src/jquery.rss.js --js_output_file=dist/jquery.rss.min.js",
-    "lint": "eslint src/**/*.js spec/**/*.js"
+    "lint": "eslint src/**/*.js spec/**/*.js",
+    "prepack": "npm run version:sync && npm run compile",
+    "version:sync": "node utils/sync-version"
   },
   "engines": {
     "node": ">=v0.4.8"

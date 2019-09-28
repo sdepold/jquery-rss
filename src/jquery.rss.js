@@ -6,6 +6,7 @@
     this.url          = url;
     this.html         = [];
     this.effectQueue  = [];
+    this.version      = '3.3.0'; // Synced version
 
     this.options = $.extend({
       ssl: false,
