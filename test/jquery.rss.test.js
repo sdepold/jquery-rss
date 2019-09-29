@@ -202,10 +202,10 @@ describe('jquery.rss', () => {
         element.rss(feedUrl, { ssl: true });
     });
 
-    describe('ads', () => {
-        it('sends the enables ads by default', (done)=>{
+    describe('support', () => {
+        it('sends the enables support by default', (done) => {
             const ajaxStub = stub($, 'getJSON').callsFake(function (apiUrl) {
-                expect(apiUrl).to.match(/ads=true/);
+                expect(apiUrl).to.match(/support=true/);
                 ajaxStub.restore();
                 done();
             });
@@ -213,14 +213,14 @@ describe('jquery.rss', () => {
             element.rss(feedUrl, { ssl: true });
         });
 
-        it('turns of ads if configured respectively', (done)=>{
+        it('turns of support if configured respectively', (done) => {
             const ajaxStub = stub($, 'getJSON').callsFake(function (apiUrl) {
-                expect(apiUrl).to.match(/ads=false/);
+                expect(apiUrl).to.match(/support=false/);
                 ajaxStub.restore();
                 done();
             });
 
-            element.rss(feedUrl, { ssl: true, ads: false });
+            element.rss(feedUrl, { ssl: true, support: false });
         })
     });
 

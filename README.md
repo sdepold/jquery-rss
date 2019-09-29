@@ -2,6 +2,18 @@
 
 This plugin can be used to read a RSS feed and transform it into a custom piece of HTML.
 
+## Support
+
+Since version 3.4.0 of jquery.rss, users have the chance to support funding future developments and
+covering the costs for the hosting of jquery.rss' respective server side companion app [feedr](https://github.com/sdepold/feedr).
+
+Every once in a while supporters will get affiliate links instead of one of the feed's entries.
+
+If you are not interested in supporting the authors of the plugin, then you can easily opt-out of it by setting the respective
+`support` option. See below for further details.
+
+Thanks in advance!
+
 ## Installation
 
 Through npm:
@@ -77,7 +89,7 @@ If you do not want to include Moment.js, you may opt for providing your own date
         // ads help covering the costs for the feedrapp server hosting and future improvements
         // default: true
         // valid values: false, true
-        ads: false,
+        support: false,
 
         // outer template for the html transformation
         // default: "<ul>{entries}</ul>"
