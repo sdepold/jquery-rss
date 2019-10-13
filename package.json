@@ -26,16 +26,18 @@
   ],
   "main": "src/jquery.rss.js",
   "scripts": {
-    "test": "npm run compile && mocha test/jquery.rss.test.js -t 10000",
-    "compile": "java -jar utils/compiler.jar src/jquery.rss.js --js_output_file=dist/jquery.rss.min.js",
+    "test": "npm run bundle && mocha test/jquery.rss.test.js -t 10000",
+    "bundle": "node utils/bundle",
     "lint": "eslint src/**/*.js spec/**/*.js",
-    "prepack": "npm run version:sync && npm run compile",
+    "prepack": "npm run version:sync && npm run bundle",
     "version:sync": "node utils/sync-version"
   },
   "engines": {
     "node": ">=v0.4.8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vanilla-rss": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.4.0",
@@ -44,6 +46,9 @@
     "mocha": "^6.2.0",
     "moment": "^2.14.1",
     "node-fetch": "^2.6.0",
+    "rollup": "^1.23.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
     "run-sequence": "^1.2.2",
     "sinon": "^7.5.0"
   },

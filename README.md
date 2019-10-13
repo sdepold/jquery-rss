@@ -35,23 +35,25 @@ Through cdnjs:
 
 ## Setup
 
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>jquery.rss example</title>
-        <script src="lib/jquery-1.6.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
-        <script src="src/jquery.rss.js"></script>
-        <script>
-          jQuery(function($) {
-            $("#rss-feeds").rss("http://feeds.feedburner.com/premiumpixels")
-          })
-        </script>
-      </head>
-      <body>
-        <div id="rss-feeds"></div>
-      </body>
-    </html>
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery.rss example</title>
+    <script src="lib/jquery-1.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script src="dist/jquery.rss.min.js"></script>
+    <script>
+      jQuery(function($) {
+        $("#rss-feeds").rss("http://feeds.feedburner.com/premiumpixels")
+      })
+    </script>
+  </head>
+  <body>
+    <div id="rss-feeds"></div>
+  </body>
+</html>
+```
 
 Demo link for above code: http://embed.plnkr.co/WQRoCYLld162uplnz1rc/preview
 
@@ -60,94 +62,91 @@ If you do not want to include Moment.js, you may opt for providing your own date
 
 ## Options
 
-    $("#rss-feeds").rss(
-      "http://feeds.feedburner.com/premiumpixels",
-      {
-        // how many entries do you want?
-        // default: 4
-        // valid values: any integer
-        limit: 10,
+```javascript
+$("#rss-feeds").rss(
+  "http://feeds.feedburner.com/premiumpixels",
+  {
+    // how many entries do you want?
+    // default: 4
+    // valid values: any integer
+    limit: 10,
 
-        // want to offset results being displayed?
-        // default: false
-        // valid values: any integer
-        offsetStart: false, // offset start point
-        offsetEnd: false, // offset end point
+    // want to offset results being displayed?
+    // default: false
+    // valid values: any integer
+    offsetStart: false, // offset start point
+    offsetEnd: false, // offset end point
 
-        // will request the API via https
-        // default: false
-        // valid values: false, true
-        ssl: true,
+    // will request the API via https
+    // default: false
+    // valid values: false, true
+    ssl: true,
 
-        // which server should be requested for feed parsing
-        // the server implementation is here: https://github.com/sdepold/feedr
-        // default: feedrapp.info
-        // valid values: any string
-        host: 'my-own-feedr-instance.com',
+    // which server should be requested for feed parsing
+    // the server implementation is here: https://github.com/sdepold/feedr
+    // default: feedrapp.info
+    // valid values: any string
+    host: 'my-own-feedr-instance.com',
 
-        // option to seldomly render ads
-        // ads help covering the costs for the feedrapp server hosting and future improvements
-        // default: true
-        // valid values: false, true
-        support: false,
+    // option to seldomly render ads
+    // ads help covering the costs for the feedrapp server hosting and future improvements
+    // default: true
+    // valid values: false, true
+    support: false,
 
-        // outer template for the html transformation
-        // default: "<ul>{entries}</ul>"
-        // valid values: any string
-        layoutTemplate: "<div class='feed-container'>{entries}</div>",
+    // outer template for the html transformation
+    // default: "<ul>{entries}</ul>"
+    // valid values: any string
+    layoutTemplate: "<div class='feed-container'>{entries}</div>",
 
-        // inner template for each entry
-        // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
-        // valid values: any string
-        entryTemplate: '<p>{title}</p>',
+    // inner template for each entry
+    // default: '<li><a href="{url}">[{author}@{date}] {title}</a><br/>{shortBodyPlain}</li>'
+    // valid values: any string
+    entryTemplate: '<p>{title}</p>',
 
-        // additional token definition for in-template-usage
-        // default: {}
-        // valid values: any object/hash
-        tokens: {
-          foo: 'bar',
-          bar: function(entry, tokens) { return entry.title }
-        },
+    // additional token definition for in-template-usage
+    // default: {}
+    // valid values: any object/hash
+    tokens: {
+      foo: 'bar',
+      bar: function(entry, tokens) { return entry.title }
+    },
 
-        // formats the date with moment.js (optional)
-        // default: 'dddd MMM Do'
-        // valid values: see http://momentjs.com/docs/#/displaying/
-        dateFormat: 'MMMM Do, YYYY',
+    // formats the date with moment.js (optional)
+    // default: 'dddd MMM Do'
+    // valid values: see http://momentjs.com/docs/#/displaying/
+    dateFormat: 'MMMM Do, YYYY',
 
-        // localizes the date with moment.js (optional)
-        // default: 'en'
-        dateLocale: 'de',
+    // localizes the date with moment.js (optional)
+    // default: 'en'
+    dateLocale: 'de',
 
-        // formats the date in whatever manner you choose. (optional)
-        // this function should return your formatted date.
-        // this is useful if you want to format dates without moment.js.
-        // if you don't use moment.js and don't define a dateFormatFunction, the dates will
-        // not be formatted; they will appear exactly as the RSS feed gives them to you.
-        dateFormatFunction: function(date){},
+    // formats the date in whatever manner you choose. (optional)
+    // this function should return your formatted date.
+    // this is useful if you want to format dates without moment.js.
+    // if you don't use moment.js and don't define a dateFormatFunction, the dates will
+    // not be formatted; they will appear exactly as the RSS feed gives them to you.
+    dateFormatFunction: function(date){},
 
-        // the effect, which is used to let the entries appear
-        // default: 'show'
-        // valid values: 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
-        effect: 'slideFastSynced',
+    // a callback, which gets triggered when an error occurs
+    // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
+    error: function(){},
 
-        // a callback, which gets triggered when an error occurs
-        // default: function() { throw new Error("jQuery RSS: url don't link to RSS-Feed") }
-        error: function(){},
+    // a callback, which gets triggered when everything was loaded successfully
+    // this is an alternative to the next parameter (callback function)
+    // default: function(){}
+    success: function(){},
 
-        // a callback, which gets triggered when everything was loaded successfully
-        // this is an alternative to the next parameter (callback function)
-        // default: function(){}
-        success: function(){},
+    // a callback, which gets triggered once data was received but before the rendering.
+    // this can be useful when you need to remove a spinner or something similar
+    onData: function(){}
+  },
 
-        // a callback, which gets triggered once data was received but before the rendering.
-        // this can be useful when you need to remove a spinner or something similar
-        onData: function(){}
-      },
-
-      // callback function
-      // called after feeds are successfully loaded and after animations are done
-      function callback() {}
-    )
+  // callback function
+  // called after feeds are successfully loaded and after animations are done
+  function callback() {}
+)
+```
 
 ### Note about the host option
 
@@ -161,18 +160,22 @@ As seen in the options, you can specify a template in order to transform the jso
 
 The basic format of those templates are:
 
-    # layoutTemplate:
-    "<outer-html>{entries}</outer-html>"
+```html
+<!-- layoutTemplate: -->
+"<outer-html>{entries}</outer-html>"
 
-    # entryTemplate:
-    "<any-html>{token1}{token2}</any-html>"
+<!-- entryTemplate: -->
+"<any-html>{token1}{token2}</any-html>"
+```
 
 So, let's say you have specified a limit of 2, using the upper pseudo html. This will result in the following:
 
-    <outer-html>
-      <any-html>{token1}{token2}</any-html>
-      <any-html>{token1}{token2}</any-html>
-    </outer-html>
+```html
+<outer-html>
+  <any-html>{token1}{token2}</any-html>
+  <any-html>{token1}{token2}</any-html>
+</outer-html>
+```
 
 There are some predefined tokens:
 
@@ -192,43 +195,51 @@ There are some predefined tokens:
 
 You can also define custom tokens using the ```tokens``` option:
 
-    $('#foo').rss(url, {
-      entryTemplate: "{dynamic}, {static}, {re-use}",
-      tokens: {
-        dynamic: function(entry, tokens){ return "dynamic-stuff: " + entry.title },
-        "re-use": function(entry, tokens){ return encodeURIComponent(tokens.teaserImageUrl) },
-        static: "static"
-      }
-    })
+```javascript
+$('#foo').rss(url, {
+  entryTemplate: "{dynamic}, {static}, {re-use}",
+  tokens: {
+    dynamic: function(entry, tokens){ return "dynamic-stuff: " + entry.title },
+    "re-use": function(entry, tokens){ return encodeURIComponent(tokens.teaserImageUrl) },
+    static: "static"
+  }
+})
+```
 
 Please make sure to NOT define infinite loops. The following example is really BAD:
 
-    $('#foo').rss(url, {
-      entryTemplate: "{loop}",
-      tokens: {
-        whoops: function(entry, tokens) { return tokens.loop() }
-        loop: function(entry, tokens) { return tokens.whoops() }
-      }
-    })
+```javascript
+$('#foo').rss(url, {
+  entryTemplate: "{loop}",
+  tokens: {
+    whoops: function(entry, tokens) { return tokens.loop() }
+    loop: function(entry, tokens) { return tokens.whoops() }
+  }
+})
+```
 
 Here is a real-world example:
 
-    $('#foo').rss(url, {
-      layoutTemplate: "<table><tr><th>Title</th></tr>{entries}</table>",
-      entryTemplate:  "<tr><td>{title}</td></tr>"
-    })
+```javascript
+$('#foo').rss(url, {
+  layoutTemplate: "<table><tr><th>Title</th></tr>{entries}</table>",
+  entryTemplate:  "<tr><td>{title}</td></tr>"
+})
+```
 
 ## Filtering
 
 The plugin also allows you to filter specific entries in order to only print them:
 
-    $("#foo").rss(url, {
-      limit: 100,
-      filterLimit: 10,
-      filter: function(entry, tokens) {
-        return tokens.title.indexOf('my filter') > -1
-      }
-    })
+```javascript
+$("#foo").rss(url, {
+  limit: 100,
+  filterLimit: 10,
+  filter: function(entry, tokens) {
+    return tokens.title.indexOf('my filter') > -1
+  }
+})
+```
 
 This will request 100 entries via the Feed API and renders the first 10 matching entries.
 
@@ -239,7 +250,6 @@ If that is installed you only have to run `npm test`.
 
 ## Authors/Contributors
 
-- DaWanda GmbH ([Website](http://dawanda.com))
 - Sascha Depold ([Twitter](http://twitter.com/sdepold) | [Github](http://github.com/sdepold) | [Website](http://depold.com))
 - Steffen Schröder  ([Twitter](http://twitter.com/ChaosSteffen) | [Github](http://github.com/ChaosSteffen) | [Website](http://schroeder-blog.de))
 
