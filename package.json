@@ -36,7 +36,7 @@
     "node": ">=v0.4.8"
   },
   "dependencies": {
-    "vanilla-rss": "^1.0.0"
+    "vanilla-rss": "^1.1.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
