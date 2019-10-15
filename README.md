@@ -2,6 +2,11 @@
 
 This plugin can be used to read a RSS feed and transform it into a custom piece of HTML.
 
+## Alternatives
+
+A vanilla JavaScript version of this library can be found here: [Vanilla RSS](https://github.com/sdepold/vanilla-rss).
+This plugin uses [Feedr](https://github.com/sdepold/feedr), a backend server that parses and converts RSS feeds into its JSON representation. The server was built as a drop-in replacement for Google's former Feed API. 
+
 ## Support
 
 Since version 3.4.0 of jquery.rss, users have the chance to support funding future developments and
