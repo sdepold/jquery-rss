@@ -126,6 +126,11 @@ $("#rss-feeds").rss(
     // default: 'en'
     dateLocale: 'de',
 
+    // Defines the format which is used for the feed.
+    // Default: null (utf8)
+    // valid values: https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings
+    encoding: 'ISO-8859-1',
+
     // formats the date in whatever manner you choose. (optional)
     // this function should return your formatted date.
     // this is useful if you want to format dates without moment.js.

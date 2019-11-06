@@ -2288,10 +2288,10 @@ v8-compile-cache@^2.0.3:
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.1.0.tgz#e14de37b31a6d194f5690d67efc4e7f6fc6ab30e"
   integrity sha512-usZBT3PW+LOjM25wbqIlZwPeJV+3OSz3M1k1Ws8snlW39dZyYL9lOGC5FgPVHfk0jKmjiDV8Z0mIbVQPiwFs7g==
 
-vanilla-rss@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/vanilla-rss/-/vanilla-rss-1.1.1.tgz#e73d3919e0a78ed9fe10a7a7636c92a9e67ac69f"
-  integrity sha512-GM1brugwIgwzRk4XSDwAqTolUyHDEuE+kPiB1HPOel4GohqzEUqjb0IFwv8LPlucTIEcxAQkSBtynLrWD4t7XA==
+vanilla-rss@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/vanilla-rss/-/vanilla-rss-1.2.0.tgz#765b13e109b6647b411010a30a52eda2263f9883"
+  integrity sha512-cAhxqr+lf2HjBhzcQtGPYtfSioQ4zrKNWg7mHN/Fpn2NQZ/T0ufNfOlvvGzFw4ZJIbs/JQyNQjCUmoSITrXOFw==
   dependencies:
     ballyhoo "^2.0.2"
 

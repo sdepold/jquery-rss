@@ -1,6 +1,10 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+## 4.1.0
+### Changed
+- Add support for custom feed encoding
+
 ## 4.0.0
 ### Changed
 - Replace business logic with [Vanilla RSS](https://github.com/sdepold/vanilla-rss)
