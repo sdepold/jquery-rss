@@ -69,6 +69,7 @@ If you do not want to include Moment.js, you may opt for providing your own date
 
 ```javascript
 $("#rss-feeds").rss(
+  // You can either provide a single feed URL or a list of URLs (via an array)
   "http://feeds.feedburner.com/premiumpixels",
   {
     // how many entries do you want?
