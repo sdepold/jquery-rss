@@ -1,6 +1,10 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+## 4.2.0
+### Changed
+- Add support for multiple feed URLs (through vanilla-rss 1.3.0)
+
 ## 4.1.0
 ### Changed
 - Add support for custom feed encoding

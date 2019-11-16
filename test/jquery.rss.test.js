@@ -16,7 +16,7 @@ describe("jquery.rss", () => {
   const fakeGetJson = content => {
     originalAjax = $.ajax;
 
-    $.ajax = function({url, success}) {
+    $.ajax = function({ url, success }) {
       success({
         responseData: {
           feed: {
@@ -51,6 +51,24 @@ describe("jquery.rss", () => {
       $.ajax = originalAjax;
       originalAjax = null;
     }
+  });
+
+  it("supports multiple rss feeds", done => {
+    originalAjax = $.ajax;
+    $.ajax = function({ url, success }) {
+      expect(url).to.include(
+        "q=https%3A%2F%2Fwww.contentful.com%2Fblog%2Ffeed.xml,http%3A%2F%2Fwww.ebaytechblog.com%2Ffeed%2F"
+      );
+      
+      done();
+    };
+
+    var $container = element;
+
+    $container.rss([
+      "https://www.contentful.com/blog/feed.xml",
+      "http://www.ebaytechblog.com/feed/"
+    ]);
   });
 
   it("renders an unordered list by default", function(done) {
@@ -176,9 +194,7 @@ describe("jquery.rss", () => {
           .join("")
           .trim();
 
-        expect(renderedContent).to.match(
-          /<ul><li>.*<\/li><\/ul>/
-        );
+        expect(renderedContent).to.match(/<ul><li>.*<\/li><\/ul>/);
         done();
       }
     );
