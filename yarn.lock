@@ -1981,10 +1981,10 @@ v8-compile-cache@^2.0.3:
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.1.0.tgz#e14de37b31a6d194f5690d67efc4e7f6fc6ab30e"
   integrity sha512-usZBT3PW+LOjM25wbqIlZwPeJV+3OSz3M1k1Ws8snlW39dZyYL9lOGC5FgPVHfk0jKmjiDV8Z0mIbVQPiwFs7g==
 
-vanilla-rss@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/vanilla-rss/-/vanilla-rss-1.3.0.tgz#d4b5a9c3c4bab9e885e7ae8a6694c9e39ed2b041"
-  integrity sha512-nNDnZg1eAsgOIhDKu9AeOZMiwam707tGBjf9n2aMdFcbFrOJE5oiuDwV4LVIeJUbOGR0CJd37Y5sKQmZFUXjXQ==
+vanilla-rss@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/vanilla-rss/-/vanilla-rss-1.4.0.tgz#4b4524c1b6089814a7a4224f879b9edb8ed4ad08"
+  integrity sha512-5j926IaGdmQrqXFfgiUJJqkyRFEnqa94cKgKiA6g5v2jCir38uiJVyn/aBipyw3Ta4v6BInnNahNAlWl3VjT4g==
   dependencies:
     ballyhoo "^2.0.2"
 

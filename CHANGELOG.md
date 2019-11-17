@@ -1,6 +1,10 @@
 ## Change Log
 All notable changes to this project will be documented in this file.
 
+## 4.3.0
+### Changed
+- Add support for sorting of entries (through vanilla-rss 1.4.0)
+
 ## 4.2.0
 ### Changed
 - Add support for multiple feed URLs (through vanilla-rss 1.3.0)
