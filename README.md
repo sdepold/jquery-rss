@@ -28,7 +28,7 @@ $ npm install jquery
 $ npm install jquery-rss
 
 const $ = require('jquery');
-require('jquery-rss); // This will add the plugin to the jQuery namespace
+require('jquery-rss'); // This will add the plugin to the jQuery namespace
 ```
 
 Through cdnjs:
