@@ -2,10 +2,6 @@
 
 This plugin can be used to read a RSS feed and transform it into a custom piece of HTML.
 
-## 💥 Deprecation warning 💥
-
-Please note this plugin is no longer maintained. The related backend server was also taken down. You can still use it but would have to host the [Feedr](https://github.com/sdepold/feedr) service on your own.
-
 ## Alternatives
 
 A vanilla JavaScript version of this library can be found here: [Vanilla RSS](https://github.com/sdepold/vanilla-rss).
